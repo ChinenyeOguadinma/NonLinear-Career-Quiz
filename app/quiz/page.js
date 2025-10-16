@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 
 const ChevronRight = ({ className }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -26,12 +25,9 @@ export default function CareerPathQuiz() {
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
   const [email, setEmail] = useState('');
-  const [linkCopied, setLinkCopied] = useState(false);
 
-  // EDIT THESE VALUES
-  const preOrderLink = "https://YOUR-PREORDER-LINK.com";
-  const siteUrl = "https://yourwebsite.com";
-  const twitterHandle = "@YourTwitterHandle"; // Your Twitter/X handle
+  // Replace this with your actual pre-order URL
+  const preOrderLink = "http://bit.ly/nonlinearcareerworkbook";
 
   const questions = [
     {
@@ -159,17 +155,13 @@ export default function CareerPathQuiz() {
   const careerTypes = {
     linear: {
       title: "The Specialist",
-      emoji: "🎯",
-      score: "10-15 points",
       description: "You thrive in focused, progressive career paths. You value deep expertise in your field and find satisfaction in becoming the go-to person in your domain.",
       strengths: ["Deep expertise", "Clear progression", "Industry credibility", "Focused growth"],
-      challenges: ["May feel boxed in by specialization", "Limited exposure to other fields", "Risk of burnout in one area"],
+      challenges: ["May feel boxed in by specialisation", "Limited exposure to other fields", "Risk of burnout in one area"],
       recommendation: "While your path is more linear, the workbook can help you identify transferable skills and explore adjacent opportunities within your field."
     },
     multi: {
       title: "The Adaptor",
-      emoji: "🔄",
-      score: "16-24 points",
       description: "You navigate between related fields, building a diverse skill set while maintaining some thread of connection. You're comfortable with evolution but appreciate some continuity.",
       strengths: ["Versatile skill set", "Adaptable to change", "Cross-functional thinking", "Balanced approach"],
       challenges: ["Explaining career narrative", "Bridging different experiences", "Finding the through-line"],
@@ -177,8 +169,6 @@ export default function CareerPathQuiz() {
     },
     explorer: {
       title: "The Explorer",
-      emoji: "🗺️",
-      score: "25-30 points",
       description: "Your career is a beautiful mosaic of experiences across different industries. You're driven by curiosity and growth, not titles. Traditional paths feel limiting.",
       strengths: ["Unique perspective", "Resilient through change", "Creative problem-solving", "Broad network"],
       challenges: ["Resume doesn't 'make sense'", "Imposter syndrome", "Explaining your path", "Finding your narrative"],
@@ -186,9 +176,7 @@ export default function CareerPathQuiz() {
     },
     pioneer: {
       title: "The Pioneer",
-      emoji: "🚀",
-      score: "31-36 points",
-      description: "You're creating a career that doesn't exist yet. You combine interests in unprecedented ways. You're not lost - you're forging a new path that others will follow.",
+      description: "You're creating a career that doesn't exist yet. You combine interests in unconventional ways. You're not lost, you're creating a new path that others will follow.",
       strengths: ["Innovation mindset", "Fearless pivoting", "Unique positioning", "Trend-setting potential"],
       challenges: ["Feeling misunderstood", "Lack of role models", "Explaining your vision", "Trusting your path"],
       recommendation: "YOU NEED THIS WORKBOOK. It will validate your journey and give you frameworks to build confidence in your pioneering path. You're not scattered - you're a visionary."
@@ -229,39 +217,6 @@ export default function CareerPathQuiz() {
     window.open(preOrderLink, '_blank');
   };
 
-  // Enhanced Social Sharing Functions
-  const shareOnTwitter = () => {
-    const result = careerTypes[showResults];
-    const text = `I just discovered I'm ${result.title} ${result.emoji} on ${twitterHandle}'s Career Path Quiz!\n\nFind out your career type:`;
-    const url = `${siteUrl}/quiz`;
-    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'width=550,height=420');
-  };
-
-  const shareOnLinkedIn = () => {
-    const url = `${siteUrl}/quiz`;
-    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank', 'width=550,height=500');
-  };
-
-  const shareOnFacebook = () => {
-    const url = `${siteUrl}/quiz`;
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'width=550,height=500');
-  };
-
-  const copyLink = () => {
-    const url = `${siteUrl}/quiz`;
-    navigator.clipboard.writeText(url).then(() => {
-      setLinkCopied(true);
-      setTimeout(() => setLinkCopied(false), 3000);
-    });
-  };
-
-  const shareViaEmail = () => {
-    const result = careerTypes[showResults];
-    const subject = encodeURIComponent(`I just discovered I'm ${result.title}!`);
-    const body = encodeURIComponent(`I took this Career Path Quiz and discovered I'm ${result.title}!\n\nTake the quiz to discover your career type: ${siteUrl}/quiz`);
-    window.location.href = `mailto:?subject=${subject}&body=${body}`;
-  };
-
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
   if (showResults) {
@@ -275,100 +230,10 @@ export default function CareerPathQuiz() {
             <div className="text-center mb-8">
               <Sparkles className="w-16 h-16 mx-auto mb-4" style={{ color: '#282c50' }} />
               <h2 className="text-4xl font-bold text-gray-800 mb-2">Your Career Type:</h2>
-              <div className="text-7xl mb-4">{result.emoji}</div>
               <h3 className="text-5xl font-bold mb-4" style={{ color: '#282c50' }}>
                 {result.title}
               </h3>
               <p className="text-gray-600 text-lg">You scored {totalScore} points</p>
-            </div>
-
-            {/* PROMINENT SOCIAL SHARING SECTION */}
-            <div className="mb-8 p-6 rounded-xl border-2" style={{ borderColor: '#282c50', backgroundColor: 'rgba(40, 44, 80, 0.03)' }}>
-              <h4 className="text-center font-bold text-xl mb-4" style={{ color: '#282c50' }}>
-                ✨ Share Your Results!
-              </h4>
-              <p className="text-center text-gray-600 mb-4">
-                Let others know you discovered your career type
-              </p>
-              
-              {/* Social Share Buttons - Large and Prominent */}
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-                {/* Twitter/X */}
-                <button
-                  onClick={shareOnTwitter}
-                  className="flex flex-col items-center gap-2 p-4 bg-black text-white rounded-lg hover:bg-gray-800 transition"
-                >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                  </svg>
-                  <span className="text-xs font-medium">Twitter</span>
-                </button>
-
-                {/* LinkedIn */}
-                <button
-                  onClick={shareOnLinkedIn}
-                  className="flex flex-col items-center gap-2 p-4 text-white rounded-lg hover:opacity-90 transition"
-                  style={{ backgroundColor: '#0077B5' }}
-                >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                  </svg>
-                  <span className="text-xs font-medium">LinkedIn</span>
-                </button>
-
-                {/* Facebook */}
-                <button
-                  onClick={shareOnFacebook}
-                  className="flex flex-col items-center gap-2 p-4 text-white rounded-lg hover:opacity-90 transition"
-                  style={{ backgroundColor: '#1877F2' }}
-                >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                  </svg>
-                  <span className="text-xs font-medium">Facebook</span>
-                </button>
-
-                {/* Email */}
-                <button
-                  onClick={shareViaEmail}
-                  className="flex flex-col items-center gap-2 p-4 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <span className="text-xs font-medium">Email</span>
-                </button>
-
-                {/* Copy Link */}
-                <button
-                  onClick={copyLink}
-                  className="flex flex-col items-center gap-2 p-4 border-2 rounded-lg hover:bg-gray-50 transition"
-                  style={{ borderColor: '#282c50', color: '#282c50' }}
-                >
-                  {linkCopied ? (
-                    <>
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-xs font-medium">Copied!</span>
-                    </>
-                  ) : (
-                    <>
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                      </svg>
-                      <span className="text-xs font-medium">Copy Link</span>
-                    </>
-                  )}
-                </button>
-              </div>
-
-              {/* Shareable Quote */}
-              <div className="mt-4 p-4 bg-white rounded-lg border border-gray-200">
-                <p className="text-sm text-gray-600 text-center italic">
-                  "I just discovered I'm <strong>{result.title}</strong> {result.emoji} - {result.description.split('.')[0]}!"
-                </p>
-              </div>
             </div>
 
             <div className="space-y-6 mb-8">
@@ -409,7 +274,7 @@ export default function CareerPathQuiz() {
             <div className="border-t pt-8">
               <div className="rounded-xl p-8 text-white text-center" style={{ backgroundColor: '#282c50' }}>
                 <h3 className="text-2xl font-bold mb-4">Ready to Own Your Non-Linear Path?</h3>
-                <p className="mb-6 text-lg text-gray-100">Get the complete workbook with 30+ exercises designed for careers like yours.</p>
+                <p className="mb-6 text-lg text-gray-100">Get the complete workbook with exercises and frameworks designed for careers like yours.</p>
                 
                 <div className="mb-6">
                   <input
@@ -432,7 +297,7 @@ export default function CareerPathQuiz() {
               </div>
             </div>
 
-            <div className="text-center mt-6 space-y-4">
+            <div className="text-center mt-6">
               <button 
                 onClick={() => {
                   setCurrentQuestion(0);
@@ -444,11 +309,6 @@ export default function CareerPathQuiz() {
               >
                 Retake Quiz
               </button>
-              <div>
-                <Link href="/" className="text-gray-600 hover:text-gray-800 underline">
-                  ← Back to Home
-                </Link>
-              </div>
             </div>
           </div>
         </div>
@@ -462,7 +322,7 @@ export default function CareerPathQuiz() {
         {currentQuestion === 0 && (
           <div className="text-center mb-8">
             <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#282c50' }}>
-              What's Your Career Path Type?
+              What's Your Non-Linear Career Path Type?
             </h1>
             <p className="text-xl text-gray-600">
               Take this 2-minute quiz to discover your unique career personality
@@ -542,11 +402,8 @@ export default function CareerPathQuiz() {
           </div>
         </div>
 
-        <div className="text-center mt-6 space-y-2">
-          <p className="text-sm text-gray-600">No email required • Takes 2 minutes • Get instant results</p>
-          <Link href="/" className="text-sm text-gray-600 hover:text-gray-800 underline block">
-            ← Back to Home
-          </Link>
+        <div className="text-center mt-6 text-gray-600">
+          <p className="text-sm">No email required • Takes 2 minutes • Get instant results</p>
         </div>
       </div>
     </div>
