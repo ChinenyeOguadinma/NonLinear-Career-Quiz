@@ -415,7 +415,8 @@ export default function CareerPathQuiz() {
 }
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CZ7SDZLEQG"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CZ7SDZLEQG">
+  </script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
