@@ -63,7 +63,7 @@ export default function HomePage() {
                     {/* Add your book cover image here */}
                     <p className="text-gray-500 text-center px-4">
                       [Book Cover Image]<br/>
-                      Upload to book cover.jpg
+                      Upload to /book cover.jpg
                     </p>
                   </div>
                 </div>
