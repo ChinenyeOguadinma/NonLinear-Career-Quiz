@@ -152,7 +152,7 @@ export default function HomePage() {
             {/* Content */}
             <div>
               <h2 className="text-4xl font-bold mb-6" style={{ color: '#282c50' }}>
-                About Chinenye Oguadinma
+                About Author
               </h2>
               <div className="space-y-4 text-gray-700 text-lg">
                 <p>
