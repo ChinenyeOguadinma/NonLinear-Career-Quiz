@@ -54,7 +54,7 @@ export default function HomePage() {
               </div>
             </div>
 
-             {/*Right: public/book cover.jpg */}
+             {/*Right: Images/book cover.jpg */}
             <div className="flex justify-center">
               <div className="relative w-full max-w-md">
                 {/Images/book cover.jpg /}
