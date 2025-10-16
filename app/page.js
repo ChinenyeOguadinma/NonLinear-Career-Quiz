@@ -43,7 +43,7 @@ export default function HomePage() {
                   className="bg-white text-center font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition"
                   style={{ color: '#282c50' }}
                 >
-                  Pre-Order Now - $XX
+                  Pre-Order Now - $23
                 </a>
                 <Link
                   href="/quiz"
@@ -144,7 +144,7 @@ export default function HomePage() {
               <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                 <p className="text-gray-500 text-center px-4">
                   [Your Photo]<br/>
-                  Upload to /public/author-photo.jpg
+                  Upload to IMG_0373 Medium 2.jpeg
                 </p>
               </div>
             </div>
@@ -156,16 +156,18 @@ export default function HomePage() {
               </h2>
               <div className="space-y-4 text-gray-700 text-lg">
                 <p>
-                  [EDIT THIS: Add 2-3 paragraphs about yourself. Your background, why you created this workbook, 
-                  your own non-linear career journey, credentials, etc.]
+                 Chinenye Olivia Oguadinma is a data storyteller, social entrepreneur, and advocate for non-linear career paths. With a background 
+                  spanning chemical engineering, business administration, UN consulting, and data strategy, 
                 </p>
                 <p>
-                  Example: "After navigating my own non-linear path through [industries/roles], I discovered that 
-                  what I thought was scattered was actually strategic. I created this workbook to help others see 
-                  their unique career patterns and build confidence in their interdisciplinary journey."
+                  She has built her career on making complex ideas accessible to 
+                    diverse audiences. Chinenye helps AI, data, and social impact teams
+                      communicate clearly with funders, decision-makers, and communities
+                        through video scripting, dashboard design, and knowledge content. 
                 </p>
                 <p>
-                  [Add more about your mission, your YouTube channel, your approach to career development, etc.]
+                  As a  Tech content creator  she shares insights on career development, data science, and inclusive tech, guiding others
+                          navigating unconventional professional journeys.
                 </p>
               </div>
 
