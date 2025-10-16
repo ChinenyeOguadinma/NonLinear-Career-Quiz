@@ -31,7 +31,7 @@ export default function Footer() {
             <div className="flex space-x-4">
               {/* Instagram */}
               <a 
-                href="https://instagram.com/YOUR_HANDLE" 
+                href="https://instagram.com/nenyeoguadinma" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-gray-300 transition"
@@ -43,7 +43,7 @@ export default function Footer() {
 
               {/* LinkedIn */}
               <a 
-                href="https://linkedin.com/in/YOUR_PROFILE" 
+                href="https://linkedin.com/in/chinenyeoguadinma" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-gray-300 transition"
@@ -53,17 +53,7 @@ export default function Footer() {
                 </svg>
               </a>
 
-              {/* Twitter/X */}
-              <a 
-                href="https://twitter.com/YOUR_HANDLE" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-gray-300 transition"
-              >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
+  
 
               {/* YouTube */}
               <a 
@@ -81,7 +71,7 @@ export default function Footer() {
             {/* Email Contact */}
             <div className="mt-4">
               <a 
-                href="mailto:hello@yourwebsite.com"
+                href="mailto:hello@non-linearcareer.com"
                 className="text-sm text-gray-300 hover:text-white transition"
               >
                 hello@yourwebsite.com
