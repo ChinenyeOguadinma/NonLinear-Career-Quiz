@@ -24,8 +24,7 @@ export default function CareerPathQuiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
-  const [email, setEmail] = useState('');
-
+  
   // Replace this with your actual pre-order URL
   const preOrderLink = "http://bit.ly/nonlinearcareerworkbook";
 
@@ -280,20 +279,14 @@ export default function CareerPathQuiz() {
                 <h3 className="text-2xl font-bold mb-4">Ready to Own Your Non-Linear Path?</h3>
                 <p className="mb-6 text-lg text-gray-100">Get the complete workbook with 30+ exercises designed for careers like yours.</p>
                 
-                <div className="mb-6">
-                  <input
-                    type="email"
-                    placeholder="Enter your email for exclusive launch info"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full max-w-md px-4 py-3 rounded-lg text-gray-800 mb-4"
+               
                   />
                   <button 
                     onClick={handlePreOrder}
                     className="w-full max-w-md bg-white font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition"
                     style={{ color: '#282c50' }}
                   >
-                    Pre-Order the Workbook Now
+                    Pre-Order the Workbook Now & Get 30% off
                   </button>
                 </div>
 
@@ -326,7 +319,7 @@ export default function CareerPathQuiz() {
         {currentQuestion === 0 && (
           <div className="text-center mb-8">
             <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#282c50' }}>
-              What's Your Career Path Type?
+              What's Your Non-Linear Career Path Type?
             </h1>
             <p className="text-xl text-gray-600">
               Take this 2-minute quiz to discover your unique career personality
