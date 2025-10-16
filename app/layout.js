@@ -5,7 +5,7 @@ import Script from 'next/script'
 
 export const metadata = {
   title: 'The Non-Linear Career Workbook | Non-Linear Careers',
-  description: 'Helping you make sense of an interdisciplinary career. Take the quiz to discover your career path type.',
+  description: 'For Professionals who do not want to be defined by a single career path. Take the quiz to discover your career path type.',
 }
 
 export default function RootLayout({ children }) {
