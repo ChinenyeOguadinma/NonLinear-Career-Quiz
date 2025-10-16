@@ -275,15 +275,7 @@ export default function CareerPathQuiz() {
               <div className="rounded-xl p-8 text-white text-center" style={{ backgroundColor: '#282c50' }}>
                 <h3 className="text-2xl font-bold mb-4">Ready to Own Your Non-Linear Path?</h3>
                 <p className="mb-6 text-lg text-gray-100">Get the complete workbook with exercises and frameworks designed for careers like yours.</p>
-                
-                <div className="mb-6">
-                  <input
-                    type="email"
-                    placeholder="Enter your email for exclusive launch info"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full max-w-md px-4 py-3 rounded-lg text-gray-800 mb-4"
-                  />
+              
                   <button 
                     onClick={handlePreOrder}
                     className="w-full max-w-md bg-white font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition"
