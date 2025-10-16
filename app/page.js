@@ -244,15 +244,7 @@ export default function CareerPathQuiz() {
               <div>
                 <p className="text-lg text-gray-700 leading-relaxed">{result.description}</p>
               </div>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CZ7SDZLEQG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-CZ7SDZLEQG');
-</script>
               <div>
                 <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Your Strengths:</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
