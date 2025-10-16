@@ -180,7 +180,7 @@ export default function CareerPathQuiz() {
     pioneer: {
       title: "The Pioneer",
       score: "31-36 points",
-      description: "You're creating a career that doesn't exist yet. You combine interests in unprecedented ways. You're not lost - you're forging a new path that others will follow.",
+      description: "You're creating a career that doesn't exist yet. You combine interests in unconventional ways. You're not lost - you're creating a new path that others will follow.",
       strengths: ["Innovation mindset", "Fearless pivoting", "Unique positioning", "Trend-setting potential"],
       challenges: ["Feeling misunderstood", "Lack of role models", "Explaining your vision", "Trusting your path"],
       recommendation: "YOU NEED THIS WORKBOOK. It will validate your journey and give you frameworks to build confidence in your pioneering path. You're not scattered - you're a visionary."
@@ -278,7 +278,7 @@ export default function CareerPathQuiz() {
             <div className="border-t pt-8">
               <div className="rounded-xl p-8 text-white text-center" style={{ backgroundColor: '#282c50' }}>
                 <h3 className="text-2xl font-bold mb-4">Ready to Own Your Non-Linear Path?</h3>
-                <p className="mb-6 text-lg text-gray-100">Get the complete workbook with 30+ exercises designed for careers like yours.</p>
+                <p className="mb-6 text-lg text-gray-100">Get the complete workbook with exercises and frameworks designed for careers like yours.</p>
                 
                 <div className="mb-6">
                   <input
