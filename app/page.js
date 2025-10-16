@@ -140,8 +140,6 @@ export default function HomePage() {
             <div>
               <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                 <p className="text-gray-500 text-center px-4">
-                  [Your Photo]<br/>
-                  Upload to /IMG_0373 Medium 2.jpeg
                 </p>
               </div>
             </div>
