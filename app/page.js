@@ -27,7 +27,7 @@ export default function CareerPathQuiz() {
   const [email, setEmail] = useState('');
 
   // Replace this with your actual pre-order URL
-  const preOrderLink = "http://bit.ly/nonlinearcareer";
+  const preOrderLink = "http://bit.ly/nonlinearcareerworkbook";
 
   const questions = [
     {
