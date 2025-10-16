@@ -12,7 +12,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
           <Link href="/" className="text-xl font-bold hover:text-gray-300 transition">
-            Chinenye Oguadinma
+            Non-Linear Careers
           </Link>
 
           {/* Desktop Menu */}
