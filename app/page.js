@@ -63,7 +63,7 @@ export default function HomePage() {
                     {public/book cover.jpg/}
                     <p className="text-gray-500 text-center px-4">
                        [Book Cover Image]<br/>
-                      Upload to /public/book-cover.png
+                      Upload to public/book-cover.jpg
                     </p>
                   </div>
                 </div>
