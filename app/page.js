@@ -57,10 +57,10 @@ export default function HomePage() {
              {/*Right: Images/book cover.jpg */}
             <div className="flex justify-center">
               <div className="relative w-full max-w-md">
-                {/Images/book cover.jpg /}
+                {/book cover.jpg/}
                 <div className="bg-white p-4 rounded-lg shadow-2xl">
                   <div className="aspect-[3/4] bg-gray-200 rounded flex items-center justify-center">
-                    {/Images/book cover.jpg /}
+                    {/book cover.jpg/}
                   
                   </div>
                 </div>
@@ -136,7 +136,7 @@ export default function HomePage() {
       <section id="about" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Image */}
+            {/IMG_0373 Medium 2.jpeg/}
             <div>
               <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                 <p className="text-gray-500 text-center px-4">
