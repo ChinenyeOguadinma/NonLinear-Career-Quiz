@@ -326,7 +326,7 @@ export default function CareerPathQuiz() {
         {currentQuestion === 0 && (
           <div className="text-center mb-8">
             <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#282c50' }}>
-              What's Your Career Path Type?
+              What's Your Non-Linear Career Path Type?
             </h1>
             <p className="text-xl text-gray-600">
               Take this 2-minute quiz to discover your unique career personality
