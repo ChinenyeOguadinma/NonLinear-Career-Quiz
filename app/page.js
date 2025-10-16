@@ -57,10 +57,10 @@ export default function HomePage() {
              {/*Right: public/book cover.jpg */}
             <div className="flex justify-center">
               <div className="relative w-full max-w-md">
-                {/Images/bookcover.jpg /}
+                {/Images/book cover.jpg /}
                 <div className="bg-white p-4 rounded-lg shadow-2xl">
                   <div className="aspect-[3/4] bg-gray-200 rounded flex items-center justify-center">
-                    {/Images/bookcover.jpg /}
+                    {/Images/book cover.jpg /}
                   
                   </div>
                 </div>
