@@ -8,7 +8,7 @@ export default function Footer() {
           
           {/* About Section */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Chinenye Oguadinma</h3>
+            <h3 className="text-xl font-bold mb-4"> The Non-Linear Community </h3>
             <p className="text-gray-300 text-sm">
               Helping professionals make sense of interdisciplinary careers through practical tools and frameworks.
             </p>
