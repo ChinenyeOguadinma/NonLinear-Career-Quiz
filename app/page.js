@@ -57,13 +57,13 @@ export default function HomePage() {
             {/* Right: Book Cover */}
             <div className="flex justify-center">
               <div className="relative w-full max-w-md">
-                {/* Replace with your actual book cover image */}
+                {public/book cover.jpg/}
                 <div className="bg-white p-4 rounded-lg shadow-2xl">
                   <div className="aspect-[3/4] bg-gray-200 rounded flex items-center justify-center">
-                    {/* Add your book cover image here */}
+                    {public/book cover.jpg/}
                     <p className="text-gray-500 text-center px-4">
-                      [Book Cover Image]<br/>
-                      Upload to /book cover.jpg
+                       [Book Cover Image]<br/>
+                      Upload to /public/book-cover.png
                     </p>
                   </div>
                 </div>
