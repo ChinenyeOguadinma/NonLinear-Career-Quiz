@@ -158,7 +158,7 @@ export default function CareerPathQuiz() {
       score: "10-15 points",
       description: "You thrive in focused, progressive career paths. You value deep expertise in your field and find satisfaction in becoming the go-to person in your domain.",
       strengths: ["Deep expertise", "Clear progression", "Industry credibility", "Focused growth"],
-      challenges: ["May feel boxed in by specialization", "Limited exposure to other fields", "Risk of burnout in one area"],
+      challenges: ["May feel boxed in by specialisation", "Limited exposure to other fields", "Risk of burnout in one area"],
       recommendation: "While your path is more linear, the workbook can help you identify transferable skills and explore adjacent opportunities within your field."
     },
     multi: {
@@ -180,7 +180,7 @@ export default function CareerPathQuiz() {
     pioneer: {
       title: "The Pioneer",
       score: "31-36 points",
-      description: "You're creating a career that doesn't exist yet. You combine interests in unconventional ways. You're not lost - you're creating a new path that others will follow.",
+      description: "You're creating a career that doesn't exist yet. You combine interests in unconventional ways. You're not lost, you're creating a new path that others will follow.",
       strengths: ["Innovation mindset", "Fearless pivoting", "Unique positioning", "Trend-setting potential"],
       challenges: ["Feeling misunderstood", "Lack of role models", "Explaining your vision", "Trusting your path"],
       recommendation: "YOU NEED THIS WORKBOOK. It will validate your journey and give you frameworks to build confidence in your pioneering path. You're not scattered - you're a visionary."
@@ -244,7 +244,15 @@ export default function CareerPathQuiz() {
               <div>
                 <p className="text-lg text-gray-700 leading-relaxed">{result.description}</p>
               </div>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CZ7SDZLEQG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-CZ7SDZLEQG');
+</script>
               <div>
                 <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Your Strengths:</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
