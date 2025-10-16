@@ -155,7 +155,6 @@ export default function CareerPathQuiz() {
   const careerTypes = {
     linear: {
       title: "The Specialist",
-      score: "10-15 points",
       description: "You thrive in focused, progressive career paths. You value deep expertise in your field and find satisfaction in becoming the go-to person in your domain.",
       strengths: ["Deep expertise", "Clear progression", "Industry credibility", "Focused growth"],
       challenges: ["May feel boxed in by specialisation", "Limited exposure to other fields", "Risk of burnout in one area"],
@@ -163,7 +162,6 @@ export default function CareerPathQuiz() {
     },
     multi: {
       title: "The Adaptor",
-      score: "16-24 points",
       description: "You navigate between related fields, building a diverse skill set while maintaining some thread of connection. You're comfortable with evolution but appreciate some continuity.",
       strengths: ["Versatile skill set", "Adaptable to change", "Cross-functional thinking", "Balanced approach"],
       challenges: ["Explaining career narrative", "Bridging different experiences", "Finding the through-line"],
@@ -171,7 +169,6 @@ export default function CareerPathQuiz() {
     },
     explorer: {
       title: "The Explorer",
-      score: "25-30 points",
       description: "Your career is a beautiful mosaic of experiences across different industries. You're driven by curiosity and growth, not titles. Traditional paths feel limiting.",
       strengths: ["Unique perspective", "Resilient through change", "Creative problem-solving", "Broad network"],
       challenges: ["Resume doesn't 'make sense'", "Imposter syndrome", "Explaining your path", "Finding your narrative"],
@@ -179,7 +176,6 @@ export default function CareerPathQuiz() {
     },
     pioneer: {
       title: "The Pioneer",
-      score: "31-36 points",
       description: "You're creating a career that doesn't exist yet. You combine interests in unconventional ways. You're not lost, you're creating a new path that others will follow.",
       strengths: ["Innovation mindset", "Fearless pivoting", "Unique positioning", "Trend-setting potential"],
       challenges: ["Feeling misunderstood", "Lack of role models", "Explaining your vision", "Trusting your path"],
