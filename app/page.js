@@ -43,7 +43,7 @@ export default function HomePage() {
                   className="bg-white text-center font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition"
                   style={{ color: '#282c50' }}
                 >
-                  Pre-Order Now - $23
+                  Pre-Order Now - $24
                 </a>
                 <Link
                   href="/quiz"
@@ -289,7 +289,7 @@ export default function HomePage() {
               className="border-2 text-center font-bold py-4 px-8 rounded-lg hover:bg-gray-50 transition"
               style={{ borderColor: '#282c50', color: '#282c50' }}
             >
-              Pre-Order Workbook - $23
+              Pre-Order Workbook - $24
             </a>
           </div>
         </div>
