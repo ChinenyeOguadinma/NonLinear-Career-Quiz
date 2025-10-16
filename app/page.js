@@ -37,7 +37,7 @@ export default function HomePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="https://YOUR-PREORDER-LINK.com"
+                  href="https://bit.ly/nonlinearcareerworkbook"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-white text-center font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition"
@@ -172,13 +172,13 @@ export default function HomePage() {
               <div className="mt-8">
                 <h3 className="font-bold mb-4" style={{ color: '#282c50' }}>Connect with me:</h3>
                 <div className="flex gap-4">
-                  <a href="https://youtube.com/@YOUR_CHANNEL" className="text-gray-600 hover:text-gray-900">
+                  <a href="https://youtube.com/@chinenyeoguadinma" className="text-gray-600 hover:text-gray-900">
                     YouTube
                   </a>
-                  <a href="https://instagram.com/YOUR_HANDLE" className="text-gray-600 hover:text-gray-900">
+                  <a href="https://instagram.com/nenyeoguadinma" className="text-gray-600 hover:text-gray-900">
                     Instagram
                   </a>
-                  <a href="https://linkedin.com/in/YOUR_PROFILE" className="text-gray-600 hover:text-gray-900">
+                  <a href="https://linkedin.com/in/chinenyeoguadinmna" className="text-gray-600 hover:text-gray-900">
                     LinkedIn
                   </a>
                 </div>
@@ -292,7 +292,7 @@ export default function HomePage() {
               className="border-2 text-center font-bold py-4 px-8 rounded-lg hover:bg-gray-50 transition"
               style={{ borderColor: '#282c50', color: '#282c50' }}
             >
-              Pre-Order Workbook - $XX
+              Pre-Order Workbook - $23
             </a>
           </div>
         </div>
