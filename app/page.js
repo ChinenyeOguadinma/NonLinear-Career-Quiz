@@ -300,18 +300,13 @@ export default function CareerPathQuiz() {
                   setCurrentQuestion(0);
                   setAnswers({});
                   setShowResults(false);
-                  setEmail('');
+                  
                 }}
                 className="text-gray-600 hover:text-gray-800 underline"
               >
                 Retake Quiz
               </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+          
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
