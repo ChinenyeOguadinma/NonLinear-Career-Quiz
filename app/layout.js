@@ -1,14 +1,36 @@
 import './globals.css'
+import Navigation from './components/Navigation'
+import Footer from './components/Footer'
+import Script from 'next/script'
 
 export const metadata = {
-  title: 'Career Path Quiz - Discover Your Non-Linear Career Type',
-  description: 'Take our 2-minute quiz to discover your unique career path type and get personalized insights.',
+  title: 'The Non-Linear Career Workbook | Chinenye Oguadinma',
+  description: 'Helping you make sense of an interdisciplinary career. Take the quiz to discover your career path type.',
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-CZ7SDZLEQG"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XXXXXXXXXX');
+          `}
+        </Script>
+      </head>
+      <body>
+        <Navigation />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }
