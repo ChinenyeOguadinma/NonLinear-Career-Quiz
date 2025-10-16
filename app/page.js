@@ -54,13 +54,13 @@ export default function HomePage() {
               </div>
             </div>
 
-             {/* Right: public/book cover.jpg */}
+             {/Right: public/book cover.jpg /}
             <div className="flex justify-center">
               <div className="relative w-full max-w-md">
-                {/* public/book cover.jpg */}
+                {/public/book cover.jpg /}
                 <div className="bg-white p-4 rounded-lg shadow-2xl">
                   <div className="aspect-[3/4] bg-gray-200 rounded flex items-center justify-center">
-                    {/* public/book cover.jpg */}
+                    {/public/book cover.jpg /}
                   
                   </div>
                 </div>
