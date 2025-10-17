@@ -181,10 +181,10 @@ export default function CareerPathQuiz() {
     pioneer: {
       title: "The Pioneer",
       score: "31-36 points",
-      description: "You're creating a career that doesn't exist yet. You combine interests in unprecedented ways. You're not lost - you're forging a new path that others will follow.",
+      description: "You're creating a career that doesn't exist yet. You combine interests in unprecedented ways. You're not confused, you're creating a new path that others will follow.",
       strengths: ["Innovation mindset", "Fearless pivoting", "Unique positioning", "Trend-setting potential"],
       challenges: ["Feeling misunderstood", "Lack of role models", "Explaining your vision", "Trusting your path"],
-      recommendation: "YOU NEED THIS WORKBOOK. It will validate your journey and give you frameworks to build confidence in your pioneering path. You're not scattered - you're a visionary."
+      recommendation: "YOU NEED THIS WORKBOOK. It will validate your journey and give you frameworks to build confidence in your pioneering path. You're not scattered!  You're a visionary."
     }
   };
 
@@ -225,7 +225,7 @@ export default function CareerPathQuiz() {
   // Social sharing functions
   const shareOnTwitter = () => {
     const result = careerTypes[showResults];
-    const text = `I just discovered I'm ${result.title} in @Chinenye Oguadinma's Career Path Quiz! 🎯 Find out your career type:`;
+    const text = `I just discovered I'm ${result.title} in the non-linear Career Path Quiz by Chinenye Oguadinma 🎯 Find out your non-linear career path:`;
     const url = `${siteUrl}/quiz`;
     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
   };
@@ -378,7 +378,7 @@ export default function CareerPathQuiz() {
         {currentQuestion === 0 && (
           <div className="text-center mb-8">
             <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#282c50' }}>
-              What's Your Career Path Type?
+              What's Your Non-Linear Career Path?
             </h1>
             <p className="text-xl text-gray-600">
               Take this 2-minute quiz to discover your unique career personality
