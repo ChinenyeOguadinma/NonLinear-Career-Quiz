@@ -165,7 +165,7 @@ export default function HomePage() {
             {/*IMG_0373 Medium 2.jpeg*/}
             <div>
               <Image
-                src="public/headshot.jpg"
+                src="/headshot.jpg"
                 alt="About Author"
                 width={500} // Adjust width as needed
                 height={500} // Adjust height as needed
