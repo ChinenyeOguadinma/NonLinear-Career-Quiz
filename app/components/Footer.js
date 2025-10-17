@@ -74,7 +74,7 @@ export default function Footer() {
                 href="mailto:hello@non-linearcareer.com"
                 className="text-sm text-gray-300 hover:text-white transition"
               >
-                hello@nonlinearcareer.com
+                hello@non-linearcareer.com
               </a>
             </div>
           </div>
