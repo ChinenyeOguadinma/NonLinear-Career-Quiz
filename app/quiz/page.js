@@ -1,33 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { ChevronRight, ChevronLeft, Sparkles } from 'lucide-react';
 
-const ChevronRight = ({ className }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-  </svg>
-);
-
-const ChevronLeft = ({ className }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-  </svg>
-);
-
-const Sparkles = ({ className }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-  </svg>
-);
-
-export default function CareerPathQuiz() {
+const CareerPathQuiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
   const [email, setEmail] = useState('');
-
-  // Replace this with your actual pre-order URL
-  const preOrderLink = "http://bit.ly/nonlinearcareerworkbook";
 
   const questions = [
     {
@@ -155,13 +135,15 @@ export default function CareerPathQuiz() {
   const careerTypes = {
     linear: {
       title: "The Specialist",
+      score: "10-15 points",
       description: "You thrive in focused, progressive career paths. You value deep expertise in your field and find satisfaction in becoming the go-to person in your domain.",
       strengths: ["Deep expertise", "Clear progression", "Industry credibility", "Focused growth"],
-      challenges: ["May feel boxed in by specialisation", "Limited exposure to other fields", "Risk of burnout in one area"],
+      challenges: ["May feel boxed in by specialization", "Limited exposure to other fields", "Risk of burnout in one area"],
       recommendation: "While your path is more linear, the workbook can help you identify transferable skills and explore adjacent opportunities within your field."
     },
     multi: {
       title: "The Adaptor",
+      score: "16-24 points",
       description: "You navigate between related fields, building a diverse skill set while maintaining some thread of connection. You're comfortable with evolution but appreciate some continuity.",
       strengths: ["Versatile skill set", "Adaptable to change", "Cross-functional thinking", "Balanced approach"],
       challenges: ["Explaining career narrative", "Bridging different experiences", "Finding the through-line"],
@@ -169,6 +151,7 @@ export default function CareerPathQuiz() {
     },
     explorer: {
       title: "The Explorer",
+      score: "25-30 points",
       description: "Your career is a beautiful mosaic of experiences across different industries. You're driven by curiosity and growth, not titles. Traditional paths feel limiting.",
       strengths: ["Unique perspective", "Resilient through change", "Creative problem-solving", "Broad network"],
       challenges: ["Resume doesn't 'make sense'", "Imposter syndrome", "Explaining your path", "Finding your narrative"],
@@ -176,7 +159,8 @@ export default function CareerPathQuiz() {
     },
     pioneer: {
       title: "The Pioneer",
-      description: "You're creating a career that doesn't exist yet. You combine interests in unconventional ways. You're not lost, you're creating a new path that others will follow.",
+      score: "31-36 points",
+      description: "You're creating a career that doesn't exist yet. You combine interests in unprecedented ways. You're not lost - you're forging a new path that others will follow.",
       strengths: ["Innovation mindset", "Fearless pivoting", "Unique positioning", "Trend-setting potential"],
       challenges: ["Feeling misunderstood", "Lack of role models", "Explaining your vision", "Trusting your path"],
       recommendation: "YOU NEED THIS WORKBOOK. It will validate your journey and give you frameworks to build confidence in your pioneering path. You're not scattered - you're a visionary."
@@ -204,17 +188,13 @@ export default function CareerPathQuiz() {
   const calculateResults = () => {
     const totalScore = Object.values(answers).reduce((sum, answer) => sum + answer.weight, 0);
     let resultType;
-    
+
     if (totalScore <= 15) resultType = 'linear';
     else if (totalScore <= 24) resultType = 'multi';
     else if (totalScore <= 30) resultType = 'explorer';
     else resultType = 'pioneer';
 
     setShowResults(resultType);
-  };
-
-  const handlePreOrder = () => {
-    window.open(preOrderLink, '_blank');
   };
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
@@ -224,13 +204,13 @@ export default function CareerPathQuiz() {
     const totalScore = Object.values(answers).reduce((sum, answer) => sum + answer.weight, 0);
 
     return (
-      <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 p-4 md:p-8">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 border-2 border-gray-100">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
             <div className="text-center mb-8">
-              <Sparkles className="w-16 h-16 mx-auto mb-4" style={{ color: '#282c50' }} />
+              <Sparkles className="w-16 h-16 mx-auto text-purple-600 mb-4" />
               <h2 className="text-4xl font-bold text-gray-800 mb-2">Your Career Type:</h2>
-              <h3 className="text-5xl font-bold mb-4" style={{ color: '#282c50' }}>
+              <h3 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
                 {result.title}
               </h3>
               <p className="text-gray-600 text-lg">You scored {totalScore} points</p>
@@ -242,11 +222,11 @@ export default function CareerPathQuiz() {
               </div>
 
               <div>
-                <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Your Strengths:</h4>
+                <h4 className="font-bold text-xl text-gray-800 mb-3">Your Strengths:</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   {result.strengths.map((strength, idx) => (
                     <div key={idx} className="flex items-center space-x-2">
-                      <span style={{ color: '#282c50' }}>✓</span>
+                      <span className="text-green-500">✓</span>
                       <span className="text-gray-700">{strength}</span>
                     </div>
                   ))}
@@ -254,7 +234,7 @@ export default function CareerPathQuiz() {
               </div>
 
               <div>
-                <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Common Challenges:</h4>
+                <h4 className="font-bold text-xl text-gray-800 mb-3">Common Challenges:</h4>
                 <ul className="space-y-2">
                   {result.challenges.map((challenge, idx) => (
                     <li key={idx} className="text-gray-600 flex items-start">
@@ -265,51 +245,40 @@ export default function CareerPathQuiz() {
                 </ul>
               </div>
 
-              <div className="rounded-xl p-6 border-2" style={{ borderColor: '#282c50', backgroundColor: 'rgba(40, 44, 80, 0.05)' }}>
-                <h4 className="font-bold text-xl mb-2" style={{ color: '#282c50' }}>Why You Need This Workbook:</h4>
+              <div className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl p-6">
+                <h4 className="font-bold text-xl text-gray-800 mb-2">Why You Need This Workbook:</h4>
                 <p className="text-gray-700 leading-relaxed">{result.recommendation}</p>
               </div>
             </div>
 
             <div className="border-t pt-8">
-              <div className="rounded-xl p-8 text-white text-center" style={{ backgroundColor: '#282c50' }}>
+              <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-4">Ready to Own Your Non-Linear Path?</h3>
-                <p className="mb-6 text-lg text-gray-100">Get the complete workbook with exercises and frameworks designed for careers like yours.</p>
-                
+                <p className="mb-6 text-lg">Get the complete workbook with 30+ exercises designed for careers like yours.</p>
+
                 <div className="mb-6">
                   <input
                     type="email"
-                    placeholder="Enter your email for detailed insights"
+                    placeholder="Enter your email for exclusive launch info"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full max-w-md px-4 py-3 rounded-lg text-gray-800 mb-4"
                   />
-                  <button 
-                    onClick={handleEmailSubmit}
-                     className="w-full max-w-md bg-white font-bold py-3 px-8 rounded-lg"
-                  >
-                      Get Insights here
-                  </button>
-                  <button 
-                    onClick={handlePreOrder}
-                    className="w-full max-w-md bg-white font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition"
-                    style={{ color: '#282c50' }}
-                  >
-                    Pre-Order the Workbook Now
+                  <button className="w-full max-w-md bg-white text-purple-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
+                    Get Early Access + 30% Off
                   </button>
                 </div>
 
-                <p className="text-sm text-gray-300">Join hundreds of others discovering their career clarity</p>
+                <p className="text-sm text-purple-100">Join [X] others who've discovered their career clarity</p>
               </div>
             </div>
 
             <div className="text-center mt-6">
-              <button 
+              <button
                 onClick={() => {
                   setCurrentQuestion(0);
                   setAnswers({});
                   setShowResults(false);
-                  setEmail('');
                 }}
                 className="text-gray-600 hover:text-gray-800 underline"
               >
@@ -323,12 +292,12 @@ export default function CareerPathQuiz() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 p-4 md:p-8">
       <div className="max-w-3xl mx-auto">
         {currentQuestion === 0 && (
           <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#282c50' }}>
-              What's Your Non-Linear Career Path Type?
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+              What's Your Career Path Type?
             </h1>
             <p className="text-xl text-gray-600">
               Take this 2-minute quiz to discover your unique career personality
@@ -336,22 +305,24 @@ export default function CareerPathQuiz() {
           </div>
         )}
 
-        <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-10 border-2 border-gray-100">
+        <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-10">
+          {/* Progress Bar */}
           <div className="mb-8">
             <div className="flex justify-between text-sm text-gray-600 mb-2">
               <span>Question {currentQuestion + 1} of {questions.length}</span>
               <span>{Math.round(progress)}% Complete</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-3">
-              <div 
-                className="h-3 rounded-full transition-all duration-300"
-                style={{ width: `${progress}%`, backgroundColor: '#282c50' }}
+              <div
+                className="bg-gradient-to-r from-purple-600 to-pink-600 h-3 rounded-full transition-all duration-300"
+                style={{ width: `${progress}%` }}
               />
             </div>
           </div>
 
+          {/* Question */}
           <div className="mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6" style={{ color: '#282c50' }}>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
               {questions[currentQuestion].question}
             </h2>
 
@@ -362,14 +333,9 @@ export default function CareerPathQuiz() {
                   onClick={() => handleAnswer(option.value, option.weight)}
                   className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
                     answers[currentQuestion]?.value === option.value
-                      ? 'bg-opacity-5'
-                      : 'border-gray-200 hover:border-gray-400 hover:bg-gray-50'
+                      ? 'border-purple-600 bg-purple-50'
+                      : 'border-gray-200 hover:border-purple-300 hover:bg-gray-50'
                   }`}
-                  style={
-                    answers[currentQuestion]?.value === option.value
-                      ? { borderColor: '#282c50', backgroundColor: 'rgba(40, 44, 80, 0.05)' }
-                      : {}
-                  }
                 >
                   <span className="text-lg text-gray-700">{option.text}</span>
                 </button>
@@ -377,16 +343,16 @@ export default function CareerPathQuiz() {
             </div>
           </div>
 
+          {/* Navigation */}
           <div className="flex justify-between items-center">
             <button
               onClick={prevQuestion}
               disabled={currentQuestion === 0}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-lg transition ${
+              className={`flex items-center space-x-2 px-6 py-3 rounded-lg ${
                 currentQuestion === 0
                   ? 'text-gray-400 cursor-not-allowed'
-                  : 'hover:bg-gray-100'
+                  : 'text-purple-600 hover:bg-purple-50'
               }`}
-              style={currentQuestion === 0 ? {} : { color: '#282c50' }}
             >
               <ChevronLeft className="w-5 h-5" />
               <span>Back</span>
@@ -395,12 +361,11 @@ export default function CareerPathQuiz() {
             <button
               onClick={nextQuestion}
               disabled={!answers[currentQuestion]}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-lg text-white transition ${
+              className={`flex items-center space-x-2 px-6 py-3 rounded-lg ${
                 !answers[currentQuestion]
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : 'hover:shadow-lg'
+                  : 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg'
               }`}
-              style={!answers[currentQuestion] ? {} : { backgroundColor: '#282c50' }}
             >
               <span>{currentQuestion === questions.length - 1 ? 'See Results' : 'Next'}</span>
               <ChevronRight className="w-5 h-5" />
@@ -414,4 +379,6 @@ export default function CareerPathQuiz() {
       </div>
     </div>
   );
-}
+};
+
+export default CareerPathQuiz;
