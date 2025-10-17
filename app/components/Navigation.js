@@ -7,7 +7,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav style={{ backgroundColor: '#282c50' }} className="text-white">
+     <nav style={{ backgroundColor: '#282c50', borderBottom: '1px solid white' }} className="text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
