@@ -1,9 +1,26 @@
 'use client';
 
-import React, { useState } from 'react';
-import { ChevronRight, ChevronLeft, Sparkles } from 'lucide-react';
+import { useState } from 'react';
 
-const CareerPathQuiz = () => {
+const ChevronRight = ({ className }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+  </svg>
+);
+
+const ChevronLeft = ({ className }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+  </svg>
+);
+
+const Sparkles = ({ className }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+  </svg>
+);
+
+export default function CareerPathQuiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
@@ -138,7 +155,7 @@ const CareerPathQuiz = () => {
       score: "10-15 points",
       description: "You thrive in focused, progressive career paths. You value deep expertise in your field and find satisfaction in becoming the go-to person in your domain.",
       strengths: ["Deep expertise", "Clear progression", "Industry credibility", "Focused growth"],
-      challenges: ["May feel boxed in by specialization", "Limited exposure to other fields", "Risk of burnout in one area"],
+      challenges: ["May feel boxed in by specialisation", "Limited exposure to other fields", "Risk of burnout in one area"],
       recommendation: "While your path is more linear, the workbook can help you identify transferable skills and explore adjacent opportunities within your field."
     },
     multi: {
@@ -188,7 +205,7 @@ const CareerPathQuiz = () => {
   const calculateResults = () => {
     const totalScore = Object.values(answers).reduce((sum, answer) => sum + answer.weight, 0);
     let resultType;
-
+    
     if (totalScore <= 15) resultType = 'linear';
     else if (totalScore <= 24) resultType = 'multi';
     else if (totalScore <= 30) resultType = 'explorer';
@@ -212,8 +229,8 @@ const CareerPathQuiz = () => {
               <h2 className="text-4xl font-bold text-gray-800 mb-2">Your Career Type:</h2>
               <h3 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
                 {result.title}
-              </h3>
-              <p className="text-gray-600 text-lg">You scored {totalScore} points</p>
+          </h3>
+             
             </div>
 
             <div className="space-y-6 mb-8">
@@ -255,7 +272,7 @@ const CareerPathQuiz = () => {
               <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-4">Ready to Own Your Non-Linear Path?</h3>
                 <p className="mb-6 text-lg">Get the complete workbook with 30+ exercises designed for careers like yours.</p>
-
+                
                 <div className="mb-6">
                   <input
                     type="email"
@@ -269,16 +286,17 @@ const CareerPathQuiz = () => {
                   </button>
                 </div>
 
-                <p className="text-sm text-purple-100">Join [X] others who've discovered their career clarity</p>
+                <p className="text-sm text-purple-100">Join hundreds of others discovering their career clarity</p>
               </div>
             </div>
 
             <div className="text-center mt-6">
-              <button
+              <button 
                 onClick={() => {
                   setCurrentQuestion(0);
                   setAnswers({});
                   setShowResults(false);
+                  setEmail('');
                 }}
                 className="text-gray-600 hover:text-gray-800 underline"
               >
@@ -306,21 +324,19 @@ const CareerPathQuiz = () => {
         )}
 
         <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-10">
-          {/* Progress Bar */}
           <div className="mb-8">
             <div className="flex justify-between text-sm text-gray-600 mb-2">
               <span>Question {currentQuestion + 1} of {questions.length}</span>
               <span>{Math.round(progress)}% Complete</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-3">
-              <div
+              <div 
                 className="bg-gradient-to-r from-purple-600 to-pink-600 h-3 rounded-full transition-all duration-300"
                 style={{ width: `${progress}%` }}
               />
             </div>
           </div>
 
-          {/* Question */}
           <div className="mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
               {questions[currentQuestion].question}
@@ -343,7 +359,6 @@ const CareerPathQuiz = () => {
             </div>
           </div>
 
-          {/* Navigation */}
           <div className="flex justify-between items-center">
             <button
               onClick={prevQuestion}
@@ -379,6 +394,4 @@ const CareerPathQuiz = () => {
       </div>
     </div>
   );
-};
-
-export default CareerPathQuiz;
+}
