@@ -23,10 +23,10 @@ export default function Navigation() {
             <Link href="/quiz" className="hover:text-gray-300 transition">
               Take Quiz
             </Link>
-            <Link href="#about" className="hover:text-gray-300 transition">
+            <Link href="/#about" className="hover:text-gray-300 transition">
               About
             </Link>
-            <Link href="#speaker" className="hover:text-gray-300 transition">
+            <Link href="/#speaker" className="hover:text-gray-300 transition">
               Speaking
             </Link>
           </div>
@@ -55,10 +55,10 @@ export default function Navigation() {
             <Link href="/quiz" className="block py-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
               Take Quiz
             </Link>
-            <Link href="#about" className="block py-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
-              About
-            </Link>
-            <Link href="#speaker" className="block py-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
+            <Link href="/#about" className="block py-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
+  About
+</Link>
+            <Link href="/#speaker" className="block py-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
               Speaking
             </Link>
           </div>
