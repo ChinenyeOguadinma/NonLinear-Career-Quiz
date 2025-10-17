@@ -162,10 +162,10 @@ export default function HomePage() {
       <section id="about" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/*IMG_0373 Medium 2.jpeg*/}
+            {/*public/headshot.jpg*/}
             <div>
               <Image
-                src="/headshot.jpg"
+                src="public/headshot.jpg"
                 alt="About Author"
                 width={500} // Adjust width as needed
                 height={500} // Adjust height as needed
