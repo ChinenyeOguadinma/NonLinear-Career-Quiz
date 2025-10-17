@@ -80,8 +80,14 @@ export default function HomePage() {
                 {/*book cover.jpg*/}
                 <div className="bg-white p-4 rounded-lg shadow-2xl">
                   <div className="aspect-[3/4] bg-gray-200 rounded flex items-center justify-center">
-                    {/*book cover.jpg*/}
-
+                    <Image
+                      src="/book cover.jpg"
+                      alt="Book Cover"
+                      width={500} // Adjust width as needed
+                      height={667} // Adjust height to maintain aspect ratio (3/4 of width)
+                      layout="responsive"
+                      className="rounded"
+                    />
                   </div>
                 </div>
               </div>
@@ -152,16 +158,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About Section */}
+     {/* About Section */}
       <section id="about" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/*IMG_0373 Medium 2.jpeg*/}
             <div>
-              <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
-                <p className="text-gray-500 text-center px-4">
-                </p>
-              </div>
+              <Image
+                src="/IMG_0373 Medium 2.jpeg"
+                alt="About Author"
+                width={500} // Adjust width as needed
+                height={500} // Adjust height as needed
+                layout="responsive"
+                className="rounded-lg"
+              />
             </div>
 
             {/* Content */}
@@ -172,7 +182,7 @@ export default function HomePage() {
               <div className="space-y-4 text-gray-700 text-lg">
                 <p>
                  Chinenye Olivia Oguadinma is a data storyteller, social entrepreneur, and advocate for non-linear career paths. With a background
-                  spanning chemical engineering, business administration, UN consulting, and data strategy,
+                  spanning chemical engineering, business administration, UN consulting, and data strategy.
                 </p>
                 <p>
                   She has built her career on making complex ideas accessible to
