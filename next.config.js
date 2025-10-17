@@ -16,7 +16,7 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'localhost',
         port: '3000',
-        pathname: 'public/IMG_0373 Medium 2.jpeg', // Adjust pathname as needed
+        pathname: 'public/headshot.jpg', // Adjust pathname as needed
       },
        {
         protocol: 'http',
@@ -28,7 +28,7 @@ const nextConfig = {
         protocol: 'http',
         hostname: '127.0.0.1',
         port: '3000',
-        pathname: 'public/IMG_0373 Medium 2.jpeg', // Adjust pathname as needed
+        pathname: 'public/headshot.jpg', // Adjust pathname as needed
       },
     ],
   },
