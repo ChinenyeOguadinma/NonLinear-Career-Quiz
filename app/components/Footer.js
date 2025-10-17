@@ -20,8 +20,8 @@ export default function Footer() {
             <ul className="space-y-2 text-gray-300 text-sm">
               <li><a href="/" className="hover:text-white transition">Home</a></li>
               <li><a href="/quiz" className="hover:text-white transition">Career Quiz</a></li>
-              <li><a href="#about" className="hover:text-white transition">About</a></li>
-              <li><a href="#speaker" className="hover:text-white transition">Book Me to Speak</a></li>
+              <li><a href="/#about" className="hover:text-white transition">About</a></li>
+              <li><a href="/#speaker" className="hover:text-white transition">Book Me to Speak</a></li>
             </ul>
           </div>
 
