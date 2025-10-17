@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 const ChevronRight = ({ className }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -25,6 +26,9 @@ export default function CareerPathQuiz() {
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
   const [email, setEmail] = useState('');
+
+  const preOrderLink = "https://bit.ly/nonlinearcareerworkbook";
+  const siteUrl = "https://www.non-linearcareer.com/"; // Change this to your actual domain
 
   const questions = [
     {
@@ -155,7 +159,7 @@ export default function CareerPathQuiz() {
       score: "10-15 points",
       description: "You thrive in focused, progressive career paths. You value deep expertise in your field and find satisfaction in becoming the go-to person in your domain.",
       strengths: ["Deep expertise", "Clear progression", "Industry credibility", "Focused growth"],
-      challenges: ["May feel boxed in by specialisation", "Limited exposure to other fields", "Risk of burnout in one area"],
+      challenges: ["May feel boxed in by specialization", "Limited exposure to other fields", "Risk of burnout in one area"],
       recommendation: "While your path is more linear, the workbook can help you identify transferable skills and explore adjacent opportunities within your field."
     },
     multi: {
@@ -205,13 +209,36 @@ export default function CareerPathQuiz() {
   const calculateResults = () => {
     const totalScore = Object.values(answers).reduce((sum, answer) => sum + answer.weight, 0);
     let resultType;
-    
+
     if (totalScore <= 15) resultType = 'linear';
     else if (totalScore <= 24) resultType = 'multi';
     else if (totalScore <= 30) resultType = 'explorer';
     else resultType = 'pioneer';
 
     setShowResults(resultType);
+  };
+
+  const handlePreOrder = () => {
+    window.open(preOrderLink, '_blank');
+  };
+
+  // Social sharing functions
+  const shareOnTwitter = () => {
+    const result = careerTypes[showResults];
+    const text = `I just discovered I'm ${result.title} in @Chinenye Oguadinma's Career Path Quiz! 🎯 Find out your career type:`;
+    const url = `${siteUrl}/quiz`;
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+  };
+
+  const shareOnLinkedIn = () => {
+    const url = `${siteUrl}/quiz`;
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+  };
+
+  const copyLink = () => {
+    const url = `${siteUrl}/quiz`;
+    navigator.clipboard.writeText(url);
+    alert('Link copied to clipboard!');
   };
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
@@ -221,16 +248,49 @@ export default function CareerPathQuiz() {
     const totalScore = Object.values(answers).reduce((sum, answer) => sum + answer.weight, 0);
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 p-4 md:p-8">
+      <div className="min-h-screen bg-gray-50 p-4 md:p-8">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 border-2 border-gray-100">
             <div className="text-center mb-8">
-              <Sparkles className="w-16 h-16 mx-auto text-purple-600 mb-4" />
+              <Sparkles className="w-16 h-16 mx-auto mb-4" style={{ color: '#282c50' }} />
               <h2 className="text-4xl font-bold text-gray-800 mb-2">Your Career Type:</h2>
-              <h3 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+              <h3 className="text-5xl font-bold mb-4" style={{ color: '#282c50' }}>
                 {result.title}
-          </h3>
-             
+              </h3>
+              
+            </div>
+
+            {/* Social Sharing Buttons */}
+            <div className="flex justify-center gap-3 mb-8 flex-wrap">
+              <button
+                onClick={shareOnTwitter}
+                className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition text-sm"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                Share on X
+              </button>
+              <button
+                onClick={shareOnLinkedIn}
+                className="flex items-center gap-2 px-4 py-2 text-white rounded-lg hover:opacity-90 transition text-sm"
+                style={{ backgroundColor: '#0077B5' }}
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                Share on LinkedIn
+              </button>
+              <button
+                onClick={copyLink}
+                className="flex items-center gap-2 px-4 py-2 border-2 rounded-lg hover:bg-gray-50 transition text-sm"
+                style={{ borderColor: '#282c50', color: '#282c50' }}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+                Copy Link
+              </button>
             </div>
 
             <div className="space-y-6 mb-8">
@@ -239,11 +299,11 @@ export default function CareerPathQuiz() {
               </div>
 
               <div>
-                <h4 className="font-bold text-xl text-gray-800 mb-3">Your Strengths:</h4>
+                <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Your Strengths:</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   {result.strengths.map((strength, idx) => (
                     <div key={idx} className="flex items-center space-x-2">
-                      <span className="text-green-500">✓</span>
+                      <span style={{ color: '#282c50' }}>✓</span>
                       <span className="text-gray-700">{strength}</span>
                     </div>
                   ))}
@@ -251,7 +311,7 @@ export default function CareerPathQuiz() {
               </div>
 
               <div>
-                <h4 className="font-bold text-xl text-gray-800 mb-3">Common Challenges:</h4>
+                <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Common Challenges:</h4>
                 <ul className="space-y-2">
                   {result.challenges.map((challenge, idx) => (
                     <li key={idx} className="text-gray-600 flex items-start">
@@ -262,17 +322,17 @@ export default function CareerPathQuiz() {
                 </ul>
               </div>
 
-              <div className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl p-6">
-                <h4 className="font-bold text-xl text-gray-800 mb-2">Why You Need This Workbook:</h4>
+              <div className="rounded-xl p-6 border-2" style={{ borderColor: '#282c50', backgroundColor: 'rgba(40, 44, 80, 0.05)' }}>
+                <h4 className="font-bold text-xl mb-2" style={{ color: '#282c50' }}>Why You Need This Workbook:</h4>
                 <p className="text-gray-700 leading-relaxed">{result.recommendation}</p>
               </div>
             </div>
 
             <div className="border-t pt-8">
-              <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl p-8 text-white text-center">
+              <div className="rounded-xl p-8 text-white text-center" style={{ backgroundColor: '#282c50' }}>
                 <h3 className="text-2xl font-bold mb-4">Ready to Own Your Non-Linear Path?</h3>
-                <p className="mb-6 text-lg">Get the complete workbook with 30+ exercises designed for careers like yours.</p>
-                
+                <p className="mb-6 text-lg text-gray-100">Get the complete workbook with 30+ exercises designed for careers like yours.</p>
+
                 <div className="mb-6">
                   <input
                     type="email"
@@ -281,17 +341,21 @@ export default function CareerPathQuiz() {
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full max-w-md px-4 py-3 rounded-lg text-gray-800 mb-4"
                   />
-                  <button className="w-full max-w-md bg-white text-purple-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
-                    Get Early Access + 30% Off
+                  <button
+                    onClick={handlePreOrder}
+                    className="w-full max-w-md bg-white font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition"
+                    style={{ color: '#282c50' }}
+                  >
+                    Pre-Order the Workbook Now
                   </button>
                 </div>
 
-                <p className="text-sm text-purple-100">Join hundreds of others discovering their career clarity</p>
+                <p className="text-sm text-gray-300">Join hundreds of others discovering their career clarity</p>
               </div>
             </div>
 
-            <div className="text-center mt-6">
-              <button 
+            <div className="text-center mt-6 space-y-4">
+              <button
                 onClick={() => {
                   setCurrentQuestion(0);
                   setAnswers({});
@@ -302,6 +366,11 @@ export default function CareerPathQuiz() {
               >
                 Retake Quiz
               </button>
+              <div>
+                <Link href="/" className="text-gray-600 hover:text-gray-800 underline">
+                  ← Back to Home
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -310,11 +379,11 @@ export default function CareerPathQuiz() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 p-4 md:p-8">
+    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
       <div className="max-w-3xl mx-auto">
         {currentQuestion === 0 && (
           <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#282c50' }}>
               What's Your Career Path Type?
             </h1>
             <p className="text-xl text-gray-600">
@@ -323,22 +392,22 @@ export default function CareerPathQuiz() {
           </div>
         )}
 
-        <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-10">
+        <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-10 border-2 border-gray-100">
           <div className="mb-8">
             <div className="flex justify-between text-sm text-gray-600 mb-2">
               <span>Question {currentQuestion + 1} of {questions.length}</span>
               <span>{Math.round(progress)}% Complete</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-3">
-              <div 
-                className="bg-gradient-to-r from-purple-600 to-pink-600 h-3 rounded-full transition-all duration-300"
-                style={{ width: `${progress}%` }}
+              <div
+                className="h-3 rounded-full transition-all duration-300"
+                style={{ width: `${progress}%`, backgroundColor: '#282c50' }}
               />
             </div>
           </div>
 
           <div className="mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6" style={{ color: '#282c50' }}>
               {questions[currentQuestion].question}
             </h2>
 
@@ -349,9 +418,14 @@ export default function CareerPathQuiz() {
                   onClick={() => handleAnswer(option.value, option.weight)}
                   className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
                     answers[currentQuestion]?.value === option.value
-                      ? 'border-purple-600 bg-purple-50'
-                      : 'border-gray-200 hover:border-purple-300 hover:bg-gray-50'
+                      ? 'bg-opacity-5'
+                      : 'border-gray-200 hover:border-gray-400 hover:bg-gray-50'
                   }`}
+                  style={
+                    answers[currentQuestion]?.value === option.value
+                      ? { borderColor: '#282c50', backgroundColor: 'rgba(40, 44, 80, 0.05)' }
+                      : {}
+                  }
                 >
                   <span className="text-lg text-gray-700">{option.text}</span>
                 </button>
@@ -363,11 +437,12 @@ export default function CareerPathQuiz() {
             <button
               onClick={prevQuestion}
               disabled={currentQuestion === 0}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-lg ${
+              className={`flex items-center space-x-2 px-6 py-3 rounded-lg transition ${
                 currentQuestion === 0
                   ? 'text-gray-400 cursor-not-allowed'
-                  : 'text-purple-600 hover:bg-purple-50'
+                  : 'hover:bg-gray-100'
               }`}
+              style={currentQuestion === 0 ? {} : { color: '#282c50' }}
             >
               <ChevronLeft className="w-5 h-5" />
               <span>Back</span>
@@ -376,11 +451,12 @@ export default function CareerPathQuiz() {
             <button
               onClick={nextQuestion}
               disabled={!answers[currentQuestion]}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-lg ${
+              className={`flex items-center space-x-2 px-6 py-3 rounded-lg text-white transition ${
                 !answers[currentQuestion]
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg'
+                  : 'hover:shadow-lg'
               }`}
+              style={!answers[currentQuestion] ? {} : { backgroundColor: '#282c50' }}
             >
               <span>{currentQuestion === questions.length - 1 ? 'See Results' : 'Next'}</span>
               <ChevronRight className="w-5 h-5" />
@@ -388,8 +464,11 @@ export default function CareerPathQuiz() {
           </div>
         </div>
 
-        <div className="text-center mt-6 text-gray-600">
-          <p className="text-sm">No email required • Takes 2 minutes • Get instant results</p>
+        <div className="text-center mt-6 space-y-2">
+          <p className="text-sm text-gray-600">No email required • Takes 2 minutes • Get instant results</p>
+          <Link href="/" className="text-sm text-gray-600 hover:text-gray-800 underline block">
+            ← Back to Home
+          </Link>
         </div>
       </div>
     </div>
