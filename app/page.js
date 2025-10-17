@@ -10,12 +10,32 @@ export default function HomePage() {
   const [speakerMessage, setSpeakerMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSpeakerInquiry = (e) => {
-    e.preventDefault();
-    // TODO: Connect to your email service (FormSpree, EmailJS, etc.)
-    console.log({ speakerName, speakerEmail, speakerMessage });
-    setSubmitted(true);
-  };
+  const handleSpeakerInquiry = async (e) => {
+  e.preventDefault();
+  
+  try {
+    const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: speakerName,
+        email: speakerEmail,
+        message: speakerMessage,
+        _subject: 'New Speaker Inquiry from Website'
+      })
+    });
+    
+    if (response.ok) {
+      setSubmitted(true);
+    } else {
+      alert('Something went wrong. Please try again or email me directly at hello@non-linearcareer.com.');
+    }
+  } catch (error) {
+    alert('Error submitting form. Please email me at hello@ynon-linearcareer.com');
+  }
+};
 
   return (
     <div className="bg-white">
