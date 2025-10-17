@@ -12,7 +12,7 @@ export default function HomePage() {
 
   const handleSpeakerInquiry = async (e) => {
   e.preventDefault();
-  
+
   try {
     const response = await fetch('https://formspree.io/f/xanpvovr', {
       method: 'POST',
@@ -26,7 +26,7 @@ export default function HomePage() {
         _subject: 'New Speaker Inquiry from Website'
       })
     });
-    
+
     if (response.ok) {
       setSubmitted(true);
     } else {
@@ -52,7 +52,7 @@ export default function HomePage() {
                 Helping you make sense of an interdisciplinary career
               </p>
               <p className="text-lg text-gray-300 mb-8">
-                Your career doesn't have to follow a straight line. This workbook helps you connect the dots, 
+                Your career doesn't have to follow a straight line. This workbook helps you connect the dots,
                 find your unique path, and build confidence in your non-traditional journey.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -74,14 +74,14 @@ export default function HomePage() {
               </div>
             </div>
 
-             {/*Right: Images/book cover.jpg */}
+             {/*Right: Images*/}
             <div className="flex justify-center">
               <div className="relative w-full max-w-md">
-                {/book cover.jpg/}
+                {/*book cover.jpg*/}
                 <div className="bg-white p-4 rounded-lg shadow-2xl">
                   <div className="aspect-[3/4] bg-gray-200 rounded flex items-center justify-center">
-                    {/book cover.jpg/}
-                  
+                    {/*book cover.jpg*/}
+
                   </div>
                 </div>
               </div>
@@ -156,7 +156,7 @@ export default function HomePage() {
       <section id="about" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/IMG_0373 Medium 2.jpeg/}
+            {/*IMG_0373 Medium 2.jpeg*/}
             <div>
               <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                 <p className="text-gray-500 text-center px-4">
@@ -171,14 +171,14 @@ export default function HomePage() {
               </h2>
               <div className="space-y-4 text-gray-700 text-lg">
                 <p>
-                 Chinenye Olivia Oguadinma is a data storyteller, social entrepreneur, and advocate for non-linear career paths. With a background 
-                  spanning chemical engineering, business administration, UN consulting, and data strategy, 
+                 Chinenye Olivia Oguadinma is a data storyteller, social entrepreneur, and advocate for non-linear career paths. With a background
+                  spanning chemical engineering, business administration, UN consulting, and data strategy,
                 </p>
                 <p>
-                  She has built her career on making complex ideas accessible to 
+                  She has built her career on making complex ideas accessible to
                     diverse audiences. Chinenye helps AI, data, and social impact teams
                       communicate clearly with funders, decision-makers, and communities
-                        through video scripting, dashboard design, and knowledge content. 
+                        through video scripting, dashboard design, and knowledge content.
                 </p>
                 <p>
                   As a  Tech content creator  she shares insights on career development, data science, and inclusive tech, guiding others
