@@ -235,9 +235,9 @@ export default function CareerPathQuiz() {
     setIsSubmitting(true);
     const r = careerTypes[showResults]; // Get the result type here
     const formId = 'dde8646d39'; // Using the form ID from the provided script
-    const apiKey = 'hlZtbnY0oyXajQQzixw94w'; // Make sure you've replaced this with your actual API Key
+    const apiKey = 'YOUR_API_KEY'; // Make sure you've replaced this with your actual API Key
 
-    if (apiKey === 'YhlZtbnY0oyXajQQzixw94w') {
+    if (apiKey === 'YOUR_API_KEY') {
       console.error("Please replace 'YOUR_API_KEY' with your actual ConvertKit API key.");
       setIsSubmitting(false);
       alert("Error: ConvertKit API key not set up. Please check the code.");
@@ -280,6 +280,25 @@ export default function CareerPathQuiz() {
         alert(`Error submitting email: ${errorMessage}. Check console for details.`);
       }
 
+
+      // OR Option 2: FormSpree (simpler)
+      // await fetch('https://formspree.io/f/xvgwlegp', {
+      //   method: 'POST',
+      //   headers: {'Content-Type': 'application/json'},
+      //   body: JSON.stringify({
+      //     email: email,
+      //     career_type: r.title
+      //   })
+      // });
+
+
+    } catch (error) {
+      console.error("Error during email submission (network or other issue):", error);
+      alert(`Error saving email. Please check your internet connection and the browser console for more details. You can still pre-order below!`);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
 
   // Social sharing functions
@@ -358,7 +377,7 @@ export default function CareerPathQuiz() {
                 <p className="text-lg text-gray-700 leading-relaxed">{r.description}</p>
               </div>
 
-              {/* Ensure r.recommendation is displayed */}
+              {/* Ensuring r.recommendation is displayed correctly */}
               <div>
                 <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Recommendation:</h4>
                 <p className="text-lg text-gray-700 leading-relaxed">{r.recommendation}</p>
