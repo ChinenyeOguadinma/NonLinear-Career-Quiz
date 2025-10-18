@@ -26,6 +26,8 @@ export default function CareerPathQuiz() {
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
   const [email, setEmail] = useState('');
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const preOrderLink = "https://bit.ly/nonlinearcareerworkbook";
   const siteUrl = "https://www.non-linearcareer.com/"; // Change this to your actual domain
@@ -222,6 +224,39 @@ export default function CareerPathQuiz() {
     window.open(preOrderLink, '_blank');
   };
 
+  // Add this function at the top of your component
+  const handleEmailSubmit = async (e) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setIsSubmitting(true);
+    const r = careerTypes[showResults]; // Get the result type here
+
+    try {
+      // Option 1: ConvertKit API (replace with your details)
+      await fetch('https://api.convertkit.com/v3/forms/dde8646d39/subscribe', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          api_key: 'hlZtbnY0oyXajQQzixw94w',
+          email: email,
+          tags: [r.title], // Tags them by career type!
+          fields: {
+            career_type: r.title
+          }
+        })
+      });
+
+      
+      setEmailSubmitted(true);
+    } catch (error) {
+      alert('Error saving email. You can still pre-order below!');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+
   // Social sharing functions
   const shareOnTwitter = () => {
     const result = careerTypes[showResults];
@@ -244,7 +279,7 @@ export default function CareerPathQuiz() {
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
   if (showResults) {
-    const result = careerTypes[showResults];
+    const r = careerTypes[showResults];
     const totalScore = Object.values(answers).reduce((sum, answer) => sum + answer.weight, 0);
 
     return (
@@ -255,9 +290,9 @@ export default function CareerPathQuiz() {
               <Sparkles className="w-16 h-16 mx-auto mb-4" style={{ color: '#282c50' }} />
               <h2 className="text-4xl font-bold text-gray-800 mb-2">Your Career Type:</h2>
               <h3 className="text-5xl font-bold mb-4" style={{ color: '#282c50' }}>
-                {result.title}
+                {r.title}
               </h3>
-              
+
             </div>
 
             {/* Social Sharing Buttons */}
@@ -295,13 +330,13 @@ export default function CareerPathQuiz() {
 
             <div className="space-y-6 mb-8">
               <div>
-                <p className="text-lg text-gray-700 leading-relaxed">{result.description}</p>
+                <p className="text-lg text-gray-700 leading-relaxed">{r.description}</p>
               </div>
 
               <div>
                 <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Your Strengths:</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                  {result.strengths.map((strength, idx) => (
+                  {r.strengths.map((strength, idx) => (
                     <div key={idx} className="flex items-center space-x-2">
                       <span style={{ color: '#282c50' }}>✓</span>
                       <span className="text-gray-700">{strength}</span>
@@ -313,7 +348,7 @@ export default function CareerPathQuiz() {
               <div>
                 <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Common Challenges:</h4>
                 <ul className="space-y-2">
-                  {result.challenges.map((challenge, idx) => (
+                  {r.challenges.map((challenge, idx) => (
                     <li key={idx} className="text-gray-600 flex items-start">
                       <span className="mr-2">•</span>
                       <span>{challenge}</span>
@@ -322,10 +357,46 @@ export default function CareerPathQuiz() {
                 </ul>
               </div>
 
-              <div className="rounded-xl p-6 border-2" style={{ borderColor: '#282c50', backgroundColor: 'rgba(40, 44, 80, 0.05)' }}>
-                <h4 className="font-bold text-xl mb-2" style={{ color: '#282c50' }}>Why You Need This Workbook:</h4>
-                <p className="text-gray-700 leading-relaxed">{result.recommendation}</p>
+              {/* Email Capture Section */}
+              <div className="rounded-xl p-8 text-white text-center" style={{backgroundColor:'#282c50'}}>
+                {!emailSubmitted ? (
+                  <>
+                    <h3 className="text-2xl font-bold mb-4">Get Your Personalized Career Guide</h3>
+                    <p className="mb-6 text-lg text-gray-100">
+                      Enter your email to receive:
+                      <br/>✓ Detailed breakdown of {r.title} career strategies
+                      <br/>✓ Actionable steps to leverage your unique path
+                      <br/>✓ Exclusive insights not found anywhere else
+                    </p>
+                    <form onSubmit={handleEmailSubmit} className="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+                      <input
+                        type="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="flex-grow px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
+                        required
+                      />
+                      <button
+                        type="submit"
+                        disabled={isSubmitting || !email}
+                        className="bg-white font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        style={{ color: '#282c50' }}
+                      >
+                        {isSubmitting ? 'Submitting...' : 'Get My Guide'}
+                      </button>
+                    </form>
+                  </>
+                ) : (
+                  <>
+                    <h3 className="text-2xl font-bold mb-4">Success!</h3>
+                    <p className="mb-6 text-lg text-gray-100">
+                      Check your inbox for your personalized career guide.
+                    </p>
+                  </>
+                )}
               </div>
+
             </div>
 
             <div className="border-t pt-8">
@@ -334,7 +405,7 @@ export default function CareerPathQuiz() {
                 <p className="mb-6 text-lg text-gray-100">Get the complete workbook with 30+ exercises designed for careers like yours.</p>
 
                 <div className="mb-6">
-                  
+
                   <button
                     onClick={handlePreOrder}
                     className="w-full max-w-md bg-white font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition"
@@ -355,6 +426,7 @@ export default function CareerPathQuiz() {
                   setAnswers({});
                   setShowResults(false);
                   setEmail('');
+                  setEmailSubmitted(false);
                 }}
                 className="text-gray-600 hover:text-gray-800 underline"
               >
