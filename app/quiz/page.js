@@ -392,7 +392,7 @@ export default function CareerPathQuiz() {
                 </ul>
               </div>
 
-              {/* Ensuring r.recommendation is displayed correctly after challenges */}
+          
               <div>
                 <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Recommendation:</h4>
                 <p className="text-lg text-gray-700 leading-relaxed">{r.recommendation}</p>
