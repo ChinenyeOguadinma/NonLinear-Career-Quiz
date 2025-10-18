@@ -89,7 +89,7 @@ export default function CareerPathQuiz() {
       options: [
         { text: "Focus on one main expertise", value: "linear", weight: 1 },
         { text: "Have a primary skill plus secondary ones", value: "multi", weight: 2 },
-        { text: "Struggle to pick just one - you're multi-talented", value: "explorer", value: 2 },
+        { text: "Struggle to pick just one - you're multi-talented", value: "explorer", weight: 2 },
         { text: "See connections others don't between different skills", value: "pioneer", weight: 3 }
       ]
     },
@@ -187,8 +187,8 @@ export default function CareerPathQuiz() {
       strengths: ["Innovation mindset", "Fearless pivoting", "Unique positioning", "Trend-setting potential"],
       challenges: ["Feeling misunderstood", "Lack of role models", "Explaining your vision", "Trusting your path"],
       recommendation: "YOU NEED THIS WORKBOOK. It will validate your journey and give you frameworks to build confidence in your pioneering path. You're not scattered!  You're a visionary."
-    }, // Remove the extra comma here if there's no next item
-  }; // Change the closing bracket ] to a curly brace } here
+    }
+  };
 
   const handleAnswer = (value, weight) => {
     setAnswers({ ...answers, [currentQuestion]: { value, weight } });
@@ -226,35 +226,36 @@ export default function CareerPathQuiz() {
 
   // Add this function at the top of your component
   const handleEmailSubmit = async (e) => {
-  e.preventDefault();
-  if (!email) return;
-  
-  setIsSubmitting(true);
-  
-  try {
-    // Option 1: Kit API (replace with your details)
-    await fetch('https://api.kit.com/v3/forms/dde8646d39D/subscribe', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        api_key: 'hlZtbnY0oyXajQQzixw94w',
-        email: email,
-        tags: [r.title], 
-        fields: {
-          career_type: r.title
-        }
-      })
-    });
-    
-    
-    
-    setEmailSubmitted(true);
-  } catch (error) {
-    alert('Error saving email. You can still pre-order below!');
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+    e.preventDefault();
+    if (!email) return;
+
+    setIsSubmitting(true);
+    const r = careerTypes[showResults]; // Get the result type here
+
+    try {
+      // Option 1: ConvertKit API (replace with your details)
+      await fetch('https://api.kit.com/v3/forms/dde8646d39/subscribe', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          api_key: 'hlZtbnY0oyXajQQzixw94w',
+          email: email,
+          tags: [r.title], // Tags them by career type!
+          fields: {
+            career_type: r.title
+          }
+        })
+      });
+
+      
+      setEmailSubmitted(true);
+    } catch (error) {
+      alert('Error saving email. You can still pre-order below!');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
 
   // Social sharing functions
   const shareOnTwitter = () => {
@@ -355,13 +356,6 @@ export default function CareerPathQuiz() {
                   ))}
                 </ul>
               </div>
-
-          
-              <div>
-                <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Recommendation:</h4>
-                <p className="text-lg text-gray-700 leading-relaxed">{r.recommendation}</p>
-              </div>
-
 
               {/* Email Capture Section */}
               <div className="rounded-xl p-8 text-white text-center" style={{backgroundColor:'#282c50'}}>
@@ -491,7 +485,7 @@ export default function CareerPathQuiz() {
                   className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
                     answers[currentQuestion]?.value === option.value
                       ? 'bg-opacity-5'
-                      : 'border-gray-200 hover:border-border-gray-400 hover:bg-gray-50'
+                      : 'border-gray-200 hover:border-gray-400 hover:bg-gray-50'
                   }`}
                   style={
                     answers[currentQuestion]?.value === option.value
