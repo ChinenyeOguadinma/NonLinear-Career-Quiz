@@ -226,51 +226,35 @@ export default function CareerPathQuiz() {
 
   // Add this function at the top of your component
   const handleEmailSubmit = async (e) => {
-  e.preventDefault();
-  if (!email || !result) return;
-  
-  setIsSubmitting(true);
-  
-  try {
-    // Get the career type from result
-    const careerType = types[result].title;
-    
-    const response = await fetch('https://api.kit.com/v3/forms/8681144/subscribe', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        api_key: 'hlZtbnY0oyXajQQzixw94w',
-        email: email,
-        first_name: '', // Optional: add if you collect names
-        tags: [careerType], // Adds tag like "The Explorer"
-        fields: {
-          career_type: careerType, // Saves to custom field
-          quiz_date: new Date().toISOString().split('T')[0] // Bonus: track when they took quiz
-        }
-      })
-    });
-    
-    if (response.ok) {
-      setEmailSubmitted(true);
+    e.preventDefault();
+    if (!email) return;
+
+    setIsSubmitting(true);
+    const r = careerTypes[showResults]; // Get the result type here
+
+    try {
+      // Option 1: ConvertKit API (replace with your details)
+      await fetch('https://api.kit.com/v3/forms/8681144/subscribe', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          api_key: 'hlZtbnY0oyXajQQzixw94w',
+          email: email,
+          tags: [r.title], // Tags them by career type!
+          fields: {
+            career_type: r.title
+          }
+        })
+      });
+
       
-      // Optional: Track in Google Analytics
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'quiz_complete', {
-          career_type: careerType
-        });
-      }
-    } else {
-      alert('Error subscribing. You can still pre-order below!');
+      setEmailSubmitted(true);
+    } catch (error) {
+      alert('Error saving email. You can still pre-order below!');
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch (error) {
-    console.error('Email submission error:', error);
-    alert('Error. You can still pre-order!');
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  };
 
 
   // Social sharing functions
