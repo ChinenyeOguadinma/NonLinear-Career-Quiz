@@ -89,7 +89,7 @@ export default function CareerPathQuiz() {
       options: [
         { text: "Focus on one main expertise", value: "linear", weight: 1 },
         { text: "Have a primary skill plus secondary ones", value: "multi", weight: 2 },
-        { text: "Struggle to pick just one - you're multi-talented", value: "explorer", weight: 2 },
+        { text: "Struggle to pick just one - you're multi-talented", value: "explorer", value: 2 },
         { text: "See connections others don't between different skills", value: "pioneer", weight: 3 }
       ]
     },
@@ -227,18 +227,31 @@ export default function CareerPathQuiz() {
   // Add this function at the top of your component
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email) {
+      console.log("Email is empty.");
+      return;
+    }
 
     setIsSubmitting(true);
     const r = careerTypes[showResults]; // Get the result type here
+    const formId = 'dde8646d39'; // Using the form ID from the provided script
+    const apiKey = 'hlZtbnY0oyXajQQzixw94w'; // Make sure you've replaced this with your actual API Key
+
+    if (apiKey === 'YhlZtbnY0oyXajQQzixw94w') {
+      console.error("Please replace 'YOUR_API_KEY' with your actual ConvertKit API key.");
+      setIsSubmitting(false);
+      alert("Error: ConvertKit API key not set up. Please check the code.");
+      return;
+    }
+
 
     try {
-      // Option 1: ConvertKit API (replace with your details)
-      await fetch('https://api.convertkit.com/v3/forms/dde8646d39/subscribe', {
+      console.log("Attempting to submit email to ConvertKit...");
+      const response = await fetch(`https://api.convertkit.com/v3/forms/${formId}/subscribe`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-          api_key: 'hlZtbnY0oyXajQQzixw94w',
+          api_key: apiKey,
           email: email,
           tags: [r.title], // Tags them by career type!
           fields: {
@@ -247,14 +260,26 @@ export default function CareerPathQuiz() {
         })
       });
 
-      
-      setEmailSubmitted(true);
-    } catch (error) {
-      alert('Error saving email. You can still pre-order below!');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+      console.log("ConvertKit API response status:", response.status);
+      const responseData = await response.json();
+      console.log("ConvertKit API response data:", responseData);
+
+      if (response.ok) {
+        setEmailSubmitted(true);
+        console.log("Email successfully submitted to ConvertKit.");
+      } else {
+        // Log specific error details from ConvertKit API response
+        console.error("ConvertKit API error response:", responseData);
+        let errorMessage = 'Unknown error';
+        if (responseData && responseData.errors && responseData.errors.length > 0) {
+           errorMessage = responseData.errors.map(err => err.message).join(', ');
+        } else if (responseData && responseData.message) {
+           errorMessage = responseData.message;
+        }
+
+        alert(`Error submitting email: ${errorMessage}. Check console for details.`);
+      }
+
 
 
   // Social sharing functions
@@ -332,6 +357,13 @@ export default function CareerPathQuiz() {
               <div>
                 <p className="text-lg text-gray-700 leading-relaxed">{r.description}</p>
               </div>
+
+              {/* Ensure r.recommendation is displayed */}
+              <div>
+                <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Recommendation:</h4>
+                <p className="text-lg text-gray-700 leading-relaxed">{r.recommendation}</p>
+              </div>
+
 
               <div>
                 <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Your Strengths:</h4>
@@ -485,7 +517,7 @@ export default function CareerPathQuiz() {
                   className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
                     answers[currentQuestion]?.value === option.value
                       ? 'bg-opacity-5'
-                      : 'border-gray-200 hover:border-gray-400 hover:bg-gray-50'
+                      : 'border-gray-200 hover:border-border-gray-400 hover:bg-gray-50'
                   }`}
                   style={
                     answers[currentQuestion]?.value === option.value
