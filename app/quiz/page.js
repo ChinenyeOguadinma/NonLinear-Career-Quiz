@@ -356,6 +356,10 @@ export default function CareerPathQuiz() {
                   ))}
                 </ul>
               </div>
+              <div>
+                <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Recommendation:</h4>
+                <p className="text-lg text-gray-700 leading-relaxed">{r.recommendation}</p>
+              </div>
 
               {/* Email Capture Section */}
               <div className="rounded-xl p-8 text-white text-center" style={{backgroundColor:'#282c50'}}>
