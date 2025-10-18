@@ -188,7 +188,7 @@ export default function CareerPathQuiz() {
       challenges: ["Feeling misunderstood", "Lack of role models", "Explaining your vision", "Trusting your path"],
       recommendation: "YOU NEED THIS WORKBOOK. It will validate your journey and give you frameworks to build confidence in your pioneering path. You're not scattered!  You're a visionary."
     }
-  };
+  ];
 
   const handleAnswer = (value, weight) => {
     setAnswers({ ...answers, [currentQuestion]: { value, weight } });
@@ -237,7 +237,7 @@ export default function CareerPathQuiz() {
     const formId = 'dde8646d39'; // Using the form ID from the provided script
     const apiKey = 'hlZtbnY0oyXajQQzixw94w'; // Make sure you've replaced this with your actual API Key
 
-    if (apiKey === 'hlZtbnY0oyXajQQzixw94wY') {
+    if (apiKey === 'hlZtbnY0oyXajQQzixw94w') {
       console.error("Please replace 'YOUR_API_KEY' with your actual ConvertKit API key.");
       setIsSubmitting(false);
       alert("Error: ConvertKit API key not set up. Please check the code.");
@@ -246,8 +246,8 @@ export default function CareerPathQuiz() {
 
 
     try {
-      console.log("Attempting to submit email");
-      const response = await fetch(`https://api.convertkit.com/v3/forms/${dde8646d39}/subscribe`, {
+      console.log("Attempting to submit email to ConvertKit...");
+      const response = await fetch(`https://api.convertkit.com/v3/forms/${formId}/subscribe`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -266,7 +266,7 @@ export default function CareerPathQuiz() {
 
       if (response.ok) {
         setEmailSubmitted(true);
-        console.log("Email successfully submitted.");
+        console.log("Email successfully submitted to ConvertKit.");
       } else {
         // Log specific error details from ConvertKit API response
         console.error("ConvertKit API error response:", responseData);
@@ -281,19 +281,10 @@ export default function CareerPathQuiz() {
       }
 
 
-      // OR Option 2: FormSpree (simpler)
-      // await fetch('https://formspree.io/f/xvgwlegp', {
-      //   method: 'POST',
-      //   headers: {'Content-Type': 'application/json'},
-      //   body: JSON.stringify({
-      //     email: email,
-      //     career_type: r.title
-      //   })
-      // });
-
-
     } catch (error) {
       console.error("Error during email submission (network or other issue):", error);
+      // The original error object contains valuable information.
+      // Let's log it directly to the console and provide a more general alert.
       alert(`Error saving email. Please check your internet connection and the browser console for more details. You can still pre-order below!`);
     } finally {
       setIsSubmitting(false);
@@ -377,13 +368,6 @@ export default function CareerPathQuiz() {
                 <p className="text-lg text-gray-700 leading-relaxed">{r.description}</p>
               </div>
 
-              {/* Ensuring r.recommendation is displayed correctly */}
-              <div>
-                <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Recommendation:</h4>
-                <p className="text-lg text-gray-700 leading-relaxed">{r.recommendation}</p>
-              </div>
-
-
               <div>
                 <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Your Strengths:</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -407,6 +391,13 @@ export default function CareerPathQuiz() {
                   ))}
                 </ul>
               </div>
+
+              {/* Ensuring r.recommendation is displayed correctly after challenges */}
+              <div>
+                <h4 className="font-bold text-xl mb-3" style={{ color: '#282c50' }}>Recommendation:</h4>
+                <p className="text-lg text-gray-700 leading-relaxed">{r.recommendation}</p>
+              </div>
+
 
               {/* Email Capture Section */}
               <div className="rounded-xl p-8 text-white text-center" style={{backgroundColor:'#282c50'}}>
