@@ -234,7 +234,7 @@ export default function CareerPathQuiz() {
 
     try {
       // Option 1: ConvertKit API (replace with your details)
-      await fetch('https://api.kit.com/v3/forms/dde8646d39/subscribe', {
+      await fetch('https://api.kit.com/v3/forms/8681144/subscribe', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
