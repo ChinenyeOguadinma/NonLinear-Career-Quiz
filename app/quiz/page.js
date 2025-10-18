@@ -235,9 +235,9 @@ export default function CareerPathQuiz() {
     setIsSubmitting(true);
     const r = careerTypes[showResults]; // Get the result type here
     const formId = 'dde8646d39'; // Using the form ID from the provided script
-    const apiKey = 'YOUR_API_KEY'; // Make sure you've replaced this with your actual API Key
+    const apiKey = 'hlZtbnY0oyXajQQzixw94w'; // Make sure you've replaced this with your actual API Key
 
-    if (apiKey === 'YOUR_API_KEY') {
+    if (apiKey === 'hlZtbnY0oyXajQQzixw94wY') {
       console.error("Please replace 'YOUR_API_KEY' with your actual ConvertKit API key.");
       setIsSubmitting(false);
       alert("Error: ConvertKit API key not set up. Please check the code.");
@@ -246,8 +246,8 @@ export default function CareerPathQuiz() {
 
 
     try {
-      console.log("Attempting to submit email to ConvertKit...");
-      const response = await fetch(`https://api.convertkit.com/v3/forms/${formId}/subscribe`, {
+      console.log("Attempting to submit email");
+      const response = await fetch(`https://api.convertkit.com/v3/forms/${dde8646d39}/subscribe`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -266,7 +266,7 @@ export default function CareerPathQuiz() {
 
       if (response.ok) {
         setEmailSubmitted(true);
-        console.log("Email successfully submitted to ConvertKit.");
+        console.log("Email successfully submitted.");
       } else {
         // Log specific error details from ConvertKit API response
         console.error("ConvertKit API error response:", responseData);
