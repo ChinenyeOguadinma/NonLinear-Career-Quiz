@@ -165,7 +165,7 @@ export default function CareerPathQuiz() {
     multi: {
       title: "The Adaptor",
       score: "16-24 points",
-      description: "You navigate between related fields, building a diverse skill set while maintaining some thread of connection. You're comfortable with evolution but appreciate some continuity.",
+      description: "You navigate between related fields, building a diverse skill set while maintaining some thread of connection. You're comfortable with changing career paths but appreciate some continuity.",
       strengths: ["Versatile skill set", "Adaptable to change", "Cross-functional thinking", "Balanced approach"],
       challenges: ["Explaining career narrative", "Bridging different experiences", "Finding the through-line"],
       recommendation: "This workbook is PERFECT for you. You'll learn to articulate your unique value proposition and see the patterns in your seemingly different roles."
@@ -173,7 +173,7 @@ export default function CareerPathQuiz() {
     explorer: {
       title: "The Explorer",
       score: "25-30 points",
-      description: "Your career is a beautiful mosaic of experiences across different industries. You're driven by curiosity and growth, not titles. Traditional paths feel limiting.",
+      description: "Your career is a beautiful collection of experiences across different industries. You're driven by curiosity and growth, not titles. Traditional paths feel limiting.",
       strengths: ["Unique perspective", "Resilient through change", "Creative problem-solving", "Broad network"],
       challenges: ["Resume doesn't 'make sense'", "Imposter syndrome", "Explaining your path", "Finding your narrative"],
       recommendation: "This workbook was made FOR YOU. You'll finally have tools to translate your diverse experience into a coherent, powerful career story."
@@ -181,7 +181,7 @@ export default function CareerPathQuiz() {
     pioneer: {
       title: "The Pioneer",
       score: "31-36 points",
-      description: "You're creating a career that doesn't exist yet. You combine interests in unprecedented ways. You're not confused, you're creating a new path that others will follow.",
+      description: "You're creating a career that doesn't exist yet. You combine interests in unconventional ways. You're not confused, you're creating a new path that others will follow.",
       strengths: ["Innovation mindset", "Fearless pivoting", "Unique positioning", "Trend-setting potential"],
       challenges: ["Feeling misunderstood", "Lack of role models", "Explaining your vision", "Trusting your path"],
       recommendation: "YOU NEED THIS WORKBOOK. It will validate your journey and give you frameworks to build confidence in your pioneering path. You're not scattered!  You're a visionary."
