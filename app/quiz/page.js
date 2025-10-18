@@ -234,13 +234,13 @@ export default function CareerPathQuiz() {
 
     setIsSubmitting(true);
     const r = careerTypes[showResults]; // Get the result type here
-    const formId = 'dde8646d39'; // Using the form ID from the provided script
-    const apiKey = 'hlZtbnY0oyXajQQzixw94w'; // Make sure you've replaced this with your actual API Key
+    const formId = 'dde8646d39'; 
+    const apiKey = 'hlZtbnY0oyXajQQzixw94w'; 
 
     if (apiKey === 'hlZtbnY0oyXajQQzixw94w') {
-      console.error("Please replace 'YOUR_API_KEY' with your actual ConvertKit API key.");
+      console.error("Please replace with your actual ConvertKit ");
       setIsSubmitting(false);
-      alert("Error: ConvertKit API key not set up. Please check the code.");
+      alert("Error: ConvertKit key not set up. Please check the code.");
       return;
     }
 
