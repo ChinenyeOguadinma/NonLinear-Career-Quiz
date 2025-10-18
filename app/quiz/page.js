@@ -226,71 +226,35 @@ export default function CareerPathQuiz() {
 
   // Add this function at the top of your component
   const handleEmailSubmit = async (e) => {
-    e.preventDefault();
-    if (!email) {
-      console.log("Email is empty.");
-      return;
-    }
-
-    setIsSubmitting(true);
-    const r = careerTypes[showResults]; // Get the result type here
-    const formId = 'dde8646d39'; 
-    const apiKey = 'hlZtbnY0oyXajQQzixw94w'; 
-
-    if (apiKey === 'hlZtbnY0oyXajQQzixw94w') {
-      console.error("Please replace with your actual ConvertKit ");
-      setIsSubmitting(false);
-      alert("Error: ConvertKit key not set up. Please check the code.");
-      return;
-    }
-
-
-    try {
-      console.log("Attempting to submit email to ConvertKit...");
-      const response = await fetch(`https://api.kit.com/v3/forms/dde8646d39/subscribe`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          api_key: apiKey,
-          email: email,
-          tags: [r.title], // Tags them by career type!
-          fields: {
-            career_type: r.title
-          }
-        })
-      });
-
-      console.log("ConvertKit API response status:", response.status);
-      const responseData = await response.json();
-      console.log("ConvertKit API response data:", responseData);
-
-      if (response.ok) {
-        setEmailSubmitted(true);
-        console.log("Email successfully submitted to ConvertKit.");
-      } else {
-        // Log specific error details from ConvertKit API response
-        console.error("ConvertKit API error response:", responseData);
-        let errorMessage = 'Unknown error';
-        if (responseData && responseData.errors && responseData.errors.length > 0) {
-           errorMessage = responseData.errors.map(err => err.message).join(', ');
-        } else if (responseData && responseData.message) {
-           errorMessage = responseData.message;
+  e.preventDefault();
+  if (!email) return;
+  
+  setIsSubmitting(true);
+  
+  try {
+    // Option 1: Kit API (replace with your details)
+    await fetch('https://api.kit.com/v3/forms/dde8646d39D/subscribe', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        api_key: 'hlZtbnY0oyXajQQzixw94w',
+        email: email,
+        tags: [r.title], 
+        fields: {
+          career_type: r.title
         }
-
-        alert(`Error submitting email: ${errorMessage}. Check console for details.`);
-      }
-
-
-    } catch (error) {
-      console.error("Error during email submission (network or other issue):", error);
-      // The original error object contains valuable information.
-      // Let's log it directly to the console and provide a more general alert.
-      alert(`Error saving email. Please check your internet connection and the browser console for more details. You can still pre-order below!`);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
+      })
+    });
+    
+    
+    
+    setEmailSubmitted(true);
+  } catch (error) {
+    alert('Error saving email. You can still pre-order below!');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   // Social sharing functions
   const shareOnTwitter = () => {
