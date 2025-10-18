@@ -247,7 +247,7 @@ export default function CareerPathQuiz() {
 
     try {
       console.log("Attempting to submit email to ConvertKit...");
-      const response = await fetch(`https://api.convertkit.com/v3/forms/${formId}/subscribe`, {
+      const response = await fetch(`https://api.convertkit.com/v3/forms/dde8646d39/subscribe`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
