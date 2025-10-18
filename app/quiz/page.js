@@ -187,8 +187,8 @@ export default function CareerPathQuiz() {
       strengths: ["Innovation mindset", "Fearless pivoting", "Unique positioning", "Trend-setting potential"],
       challenges: ["Feeling misunderstood", "Lack of role models", "Explaining your vision", "Trusting your path"],
       recommendation: "YOU NEED THIS WORKBOOK. It will validate your journey and give you frameworks to build confidence in your pioneering path. You're not scattered!  You're a visionary."
-    }, // Add the missing comma here
-  ];
+    }, // Remove the extra comma here if there's no next item
+  }; // Change the closing bracket ] to a curly brace } here
 
   const handleAnswer = (value, weight) => {
     setAnswers({ ...answers, [currentQuestion]: { value, weight } });
@@ -235,7 +235,7 @@ export default function CareerPathQuiz() {
     setIsSubmitting(true);
     const r = careerTypes[showResults]; // Get the result type here
     const formId = 'dde8646d39'; // Using the form ID from the provided script
-    const apiKey = 'hlZtbnY0oyXajQQzixw94wY'; // Make sure you've replaced this with your actual API Key
+    const apiKey = 'hlZtbnY0oyXajQQzixw94w'; // Make sure you've replaced this with your actual API Key
 
     if (apiKey === 'hlZtbnY0oyXajQQzixw94w') {
       console.error("Please replace 'YOUR_API_KEY' with your actual ConvertKit API key.");
