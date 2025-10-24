@@ -1,3 +1,5 @@
+npm i @vercel/speed-insights
+
 import './globals.css'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
