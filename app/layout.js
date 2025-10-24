@@ -13,16 +13,18 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         {/* Google Analytics */}
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CZ7SDZLEQG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CZ7SDZLEQG');
-</script>
-        {/* Vercel Speed Insights script */}
-        
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-CZ7SDZLEQG"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-CZ7SDZLEQG');
+          `}
+        </Script>
       </head>
       <body>
         <Navigation />
