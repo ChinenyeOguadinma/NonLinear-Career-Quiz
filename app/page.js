@@ -49,7 +49,7 @@ export default function HomePage() {
                 The Non-Linear Career Workbook
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 mb-8">
-                Helping you make sense of an interdisciplinary career
+               Your Guide to Career Transitions & Pivots
               </p>
               <p className="text-lg text-gray-300 mb-8">
                 Your career doesn't have to follow a straight line. This workbook helps you connect the dots,
@@ -138,7 +138,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-xl font-bold mb-2" style={{ color: '#282c50' }}>Career Mapping</h3>
               <p className="text-gray-600">
-                Connect the dots between your experiences and see the thread in your journey
+                Connect the dots between your experiences, own your path and start attracting high-value clients
               </p>
             </div>
 
@@ -151,7 +151,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-xl font-bold mb-2" style={{ color: '#282c50' }}>Action Plans</h3>
               <p className="text-gray-600">
-                Practical frameworks to make confident decisions about your next career move
+                Practical frameworks to make confident decisions about your next career pivot
               </p>
             </div>
           </div>
