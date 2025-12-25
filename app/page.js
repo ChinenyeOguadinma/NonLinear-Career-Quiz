@@ -63,7 +63,7 @@ export default function HomePage() {
                   className="bg-white text-center font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition"
                   style={{ color: '#282c50' }}
                 >
-                  Pre-Order Now - $24
+                  Order Now - $24
                 </a>
                 <Link
                   href="/quiz"
