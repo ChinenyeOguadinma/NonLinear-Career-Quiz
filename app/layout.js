@@ -2,6 +2,7 @@ import './globals.css'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import Script from 'next/script'
+import { Analytics } from '@vercel/analytics/next'
 
 export const metadata = {
   title: 'The Non-Linear Career Workbook | Non-Linear Careers',
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
         <Navigation />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   )
