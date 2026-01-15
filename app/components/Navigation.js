@@ -61,6 +61,9 @@ export default function Navigation() {
             <Link href="/speaker" className="block py-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
               Speaking
             </Link>
+                <Link href="/workshop" className="block py-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
+              Workshop
+            </Link>
           </div>
         )}
       </div>
