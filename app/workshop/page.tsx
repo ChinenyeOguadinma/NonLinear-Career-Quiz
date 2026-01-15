@@ -97,7 +97,7 @@ export default function WorkshopPage() {
             </Link>
           </div>
           <p className="mt-6 text-sm text-gray-500">
-            Investment: $347 | Starting March 2026 | Limited Spots Available
+            Investment: $35| Starting March 2026 | Limited Spots Available
           </p>
         </div>
       </section>
