@@ -25,8 +25,9 @@ export default function CareerPathQuiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
-  const [email, setEmail] = useState('');
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [emailInput, setEmailInput] = useState(''); // Renamed from 'email'
+  const [initialEmailCaptured, setInitialEmailCaptured] = useState(false); // New state to gate the quiz
+  const [resultsEmailCaptured, setResultsEmailCaptured] = useState(false); // Renamed from 'emailSubmitted' for results page
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const preOrderLink = "https://bit.ly/nonlinearcareerworkbook";
@@ -224,31 +225,58 @@ export default function CareerPathQuiz() {
     window.open(preOrderLink, '_blank');
   };
 
-  // Add this function at the top of your component
-  const handleEmailSubmit = async (e) => {
+  // New function for initial email capture before the quiz
+  const handleInitialEmailSubmit = async (e) => {
     e.preventDefault();
-    if (!email) return;
+    if (!emailInput) return;
 
     setIsSubmitting(true);
-    const r = careerTypes[showResults]; // Get the result type here
 
     try {
-      // Option 1: ConvertKit API (replace with your details)
       await fetch('https://api.kit.com/v3/forms/8681144/subscribe', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
           api_key: 'hlZtbnY0oyXajQQzixw94w',
-          email: email,
-          tags: [r.title], // Tags them by career type!
+          email: emailInput,
+          tags: ['Quiz_Start_Interest'], // A generic tag for pre-quiz interest
+        })
+      });
+
+      setInitialEmailCaptured(true);
+      setEmailInput(''); // Clear email input after submission
+    } catch (error) {
+      alert('Error saving email. You can still access the quiz, but we recommend subscribing!');
+      setInitialEmailCaptured(true); // Allow to proceed even on API error
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Modified function for email capture on the results page (renamed from handleEmailSubmit)
+  const handleResultsEmailSubmit = async (e) => {
+    e.preventDefault();
+    if (!emailInput) return;
+
+    setIsSubmitting(true);
+    const r = careerTypes[showResults];
+
+    try {
+      await fetch('https://api.kit.com/v3/forms/8681144/subscribe', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          api_key: 'hlZtbnY0oyXajQQzixw94w',
+          email: emailInput,
+          tags: [r.title],
           fields: {
             career_type: r.title
           }
         })
       });
 
-      
-      setEmailSubmitted(true);
+      setResultsEmailCaptured(true);
+      setEmailInput(''); // Clear input after submission
     } catch (error) {
       alert('Error saving email. You can still pre-order below!');
     } finally {
@@ -311,7 +339,7 @@ export default function CareerPathQuiz() {
                 className="flex items-center gap-2 px-4 py-2 text-white rounded-lg hover:opacity-90 transition text-sm"
                 style={{ backgroundColor: '#0077B5' }}
               >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="00 24 24">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
                 Share on LinkedIn
@@ -361,9 +389,9 @@ export default function CareerPathQuiz() {
                 <p className="text-lg text-gray-700 leading-relaxed">{r.recommendation}</p>
               </div>
 
-              {/* Email Capture Section */}
+              {/* Email Capture Section - now uses resultsEmailCaptured and handleResultsEmailSubmit */}
               <div className="rounded-xl p-8 text-white text-center" style={{backgroundColor:'#282c50'}}>
-                {!emailSubmitted ? (
+                {!resultsEmailCaptured ? (
                   <>
                     <h3 className="text-2xl font-bold mb-4">Get Your Personalized Career Guide</h3>
                     <p className="mb-6 text-lg text-gray-100">
@@ -372,18 +400,18 @@ export default function CareerPathQuiz() {
                       <br/>✓ Actionable steps to leverage your unique path
                       <br/>✓ Exclusive insights not found anywhere else
                     </p>
-                    <form onSubmit={handleEmailSubmit} className="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+                    <form onSubmit={handleResultsEmailSubmit} className="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
                       <input
                         type="email"
                         placeholder="Enter your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={emailInput}
+                        onChange={(e) => setEmailInput(e.target.value)}
                         className="flex-grow px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
                         required
                       />
                       <button
                         type="submit"
-                        disabled={isSubmitting || !email}
+                        disabled={isSubmitting || !emailInput}
                         className="bg-white font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition disabled:opacity-50 disabled:cursor-not-allowed"
                         style={{ color: '#282c50' }}
                       >
@@ -429,8 +457,9 @@ export default function CareerPathQuiz() {
                   setCurrentQuestion(0);
                   setAnswers({});
                   setShowResults(false);
-                  setEmail('');
-                  setEmailSubmitted(false);
+                  setEmailInput(''); // Clear email input
+                  setInitialEmailCaptured(false); // Go back to initial email gate
+                  setResultsEmailCaptured(false); // Reset results page email flag too
                 }}
                 className="text-gray-600 hover:text-gray-800 underline"
               >
@@ -446,7 +475,44 @@ export default function CareerPathQuiz() {
         </div>
       </div>
     );
-  }
+  } else if (!initialEmailCaptured) { // NEW: Initial email gate
+    return (
+      <div className="min-h-screen bg-gray-50 p-4 md:p-8 flex items-center justify-center">
+        <div className="max-w-xl mx-auto text-center bg-white rounded-2xl shadow-2xl p-8 md:p-12 border-2 border-gray-100">
+          <Sparkles className="w-16 h-16 mx-auto mb-4" style={{ color: '#282c50' }} />
+          <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#282c50' }}>
+            Discover Your Non-Linear Career Path
+          </h1>
+          <p className="text-xl text-gray-600 mb-6">
+            Enter your email to take this 2-minute quiz and unlock your unique career personality.
+          </p>
+          <form onSubmit={handleInitialEmailSubmit} className="flex flex-col gap-4 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={emailInput}
+              onChange={(e) => setEmailInput(e.target.value)}
+              className="flex-grow px-4 py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+              required
+            />
+            <button
+              type="submit"
+              disabled={isSubmitting || !emailInput}
+              className="bg-black text-white font-bold py-3 px-8 rounded-lg hover:bg-gray-800 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? 'Submitting...' : 'Start Quiz'}
+            </button>
+          </form>
+          <div className="text-center mt-6 space-y-2">
+            <p className="text-sm text-gray-600">Takes 2 minutes • Get instant results</p>
+            <Link href="/" className="text-sm text-gray-600 hover:text-gray-800 underline block">
+              ← Back to Home
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  } else {
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
@@ -541,6 +607,3 @@ export default function CareerPathQuiz() {
           </Link>
         </div>
       </div>
-    </div>
-  );
-}
